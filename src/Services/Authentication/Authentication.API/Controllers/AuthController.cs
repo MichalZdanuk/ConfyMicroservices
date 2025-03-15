@@ -1,11 +1,10 @@
 using Authentication.API.Authentication.Login;
 using Authentication.API.Authentication.Register;
-using MediatR;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Authentication.API.Controllers
 {
-    [Route("auth")]
+	[Route("auth")]
     [ApiController]
     public class AuthController(IMediator mediator)
         : ControllerBase

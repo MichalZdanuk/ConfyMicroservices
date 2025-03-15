@@ -1,5 +1,4 @@
 ﻿using Authentication.API.DAL;
-using Microsoft.EntityFrameworkCore;
 
 namespace Authentication.API;
 

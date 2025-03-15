@@ -1,8 +1,4 @@
-﻿using Authentication.API.Entities;
-using Microsoft.EntityFrameworkCore;
-using System.Reflection;
-
-namespace Authentication.API.DAL;
+﻿namespace Authentication.API.DAL;
 
 public class AuthenticationDbContext : DbContext
 {

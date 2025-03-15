@@ -1,6 +1,5 @@
 ﻿using Authentication.API.Services;
 using Shared.DependencyInjection;
-using System.Reflection;
 
 namespace Authentication.API;
 

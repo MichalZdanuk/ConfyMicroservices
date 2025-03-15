@@ -1,5 +1,4 @@
 ﻿using Authentication.API.Services;
-using MediatR;
 
 namespace Authentication.API.Authentication.Login;
 

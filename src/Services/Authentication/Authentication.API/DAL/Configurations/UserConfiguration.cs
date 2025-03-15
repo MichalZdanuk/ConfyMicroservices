@@ -1,6 +1,4 @@
-﻿using Authentication.API.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Shared.Infrastructure;
 
 namespace Authentication.API.DAL.Configurations;

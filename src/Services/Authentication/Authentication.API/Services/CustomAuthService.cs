@@ -1,7 +1,5 @@
 ﻿using Authentication.API.DAL;
-using Authentication.API.Entities;
 using Authentication.API.Exceptions;
-using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;

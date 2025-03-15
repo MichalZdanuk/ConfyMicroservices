@@ -1,6 +1,5 @@
 using Authentication.API;
 using Authentication.API.DAL;
-using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
