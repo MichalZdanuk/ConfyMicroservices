@@ -8,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<AuthenticationDbContext>(options =>
 	options.UseSqlServer(builder.Configuration.GetConnectionString("Database")));
 
+builder.Services.AddServices();
+
 builder.Services.AddControllers();
 
 var app = builder.Build();
