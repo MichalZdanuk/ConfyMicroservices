@@ -15,6 +15,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared.Messaging", "Shared\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Shared", "Shared\Shared\Shared.csproj", "{9F79679B-7F25-4012-A83D-E77D736F5890}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "LoadTests", "LoadTests", "{DC144413-39DA-4EE3-AF57-9E205D377F1F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConfyMicroservices.LoadTests", "LoadTests\ConfyMicroservices.LoadTests\ConfyMicroservices.LoadTests.csproj", "{BF80AA19-82C4-4EA6-B042-2C6B13962206}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,10 @@ Global
 		{9F79679B-7F25-4012-A83D-E77D736F5890}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9F79679B-7F25-4012-A83D-E77D736F5890}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9F79679B-7F25-4012-A83D-E77D736F5890}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BF80AA19-82C4-4EA6-B042-2C6B13962206}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BF80AA19-82C4-4EA6-B042-2C6B13962206}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BF80AA19-82C4-4EA6-B042-2C6B13962206}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BF80AA19-82C4-4EA6-B042-2C6B13962206}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -42,5 +50,6 @@ Global
 		{84858C53-7C96-4D72-8AA3-69D6578ED162} = {6B43280B-A9FD-4EC8-9BA4-4F008B65950C}
 		{72F0E744-F5C9-4CA4-9E41-57F2E6C6EA1D} = {489BB9B4-8DF5-4543-816B-2D5CDD58B6FC}
 		{9F79679B-7F25-4012-A83D-E77D736F5890} = {489BB9B4-8DF5-4543-816B-2D5CDD58B6FC}
+		{BF80AA19-82C4-4EA6-B042-2C6B13962206} = {DC144413-39DA-4EE3-AF57-9E205D377F1F}
 	EndGlobalSection
 EndGlobal
