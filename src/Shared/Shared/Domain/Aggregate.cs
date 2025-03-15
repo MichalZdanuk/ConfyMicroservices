@@ -10,6 +10,8 @@ public class Aggregate : IAggregate
 	}
 
 	public Guid Id { get; set; }
+	public DateTime CreationDate { get; set; }
+	public DateTime UpdateDate { get; set; }
 
 	public IDomainEvent[] ClearDomainEvents()
 	{
