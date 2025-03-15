@@ -1,4 +1,5 @@
 ﻿using Authentication.API.Services;
+using Shared.Behaviors;
 using System.Reflection;
 
 namespace Authentication.API;
@@ -10,6 +11,7 @@ public static class DependencyInjection
 		services.AddMediatR(config =>
 		{
 			config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+			config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 		});
 
 		services.AddScoped<ICustomAuthService, CustomAuthService>();
