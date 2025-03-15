@@ -1,0 +1,24 @@
+services:
+  authenticationdb:
+    container_name: authenticationdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=HardPassword12345678abc!
+    restart: always
+    ports:
+      - "1439:1433"
+
+  authentication.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=authenticationdb;Database=AuthenticationDb;User Id=sa;Password=HardPassword12345678abc!;Encrypt=False;TrustServerCertificate=True
+    depends_on:
+      - authenticationdb
+    ports:
+      - "6000:8080"
+      - "6060:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro

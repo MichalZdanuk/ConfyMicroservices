@@ -1,0 +1,9 @@
+services:
+  authenticationdb:
+    image: mcr.microsoft.com/mssql/server
+
+  authentication.api:
+    image: ${DOCKER_REGISTRY-}authenticationapi
+    build:
+      context: .
+      dockerfile: Services/Authentication/Authentication.API/Dockerfile
