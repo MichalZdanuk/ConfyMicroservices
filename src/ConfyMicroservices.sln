@@ -25,6 +25,10 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ApiGateways", "ApiGateways"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YarpApiGateway", "ApiGateways\YarpApiGateway\YarpApiGateway.csproj", "{9C6FBAB5-796D-4051-B344-9B30E7137D50}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ConferenceManagement", "ConferenceManagement", "{8355BFFF-CF37-4694-9971-C66AA984C304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceManagement.API", "Services\ConferenceManagement\ConferenceManagement.API\ConferenceManagement.API.csproj", "{CAC371A1-E4A6-4FA5-9518-A36B685A4F25}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -55,6 +59,10 @@ Global
 		{9C6FBAB5-796D-4051-B344-9B30E7137D50}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9C6FBAB5-796D-4051-B344-9B30E7137D50}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9C6FBAB5-796D-4051-B344-9B30E7137D50}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CAC371A1-E4A6-4FA5-9518-A36B685A4F25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CAC371A1-E4A6-4FA5-9518-A36B685A4F25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CAC371A1-E4A6-4FA5-9518-A36B685A4F25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CAC371A1-E4A6-4FA5-9518-A36B685A4F25}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -66,5 +74,7 @@ Global
 		{9F79679B-7F25-4012-A83D-E77D736F5890} = {489BB9B4-8DF5-4543-816B-2D5CDD58B6FC}
 		{BF80AA19-82C4-4EA6-B042-2C6B13962206} = {DC144413-39DA-4EE3-AF57-9E205D377F1F}
 		{9C6FBAB5-796D-4051-B344-9B30E7137D50} = {89861344-0CB5-4D95-A298-AE14A673D67A}
+		{8355BFFF-CF37-4694-9971-C66AA984C304} = {B23327F1-593B-42BD-B809-D097E5A019D5}
+		{CAC371A1-E4A6-4FA5-9518-A36B685A4F25} = {8355BFFF-CF37-4694-9971-C66AA984C304}
 	EndGlobalSection
 EndGlobal
