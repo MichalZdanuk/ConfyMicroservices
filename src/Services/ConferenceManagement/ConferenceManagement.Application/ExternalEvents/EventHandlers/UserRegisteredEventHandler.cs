@@ -4,6 +4,7 @@ using ConferenceManagement.Domain.Repositories;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Shared.Messaging.Events;
+using System.Text.Json;
 
 namespace ConferenceManagement.Application.ExternalEvents.EventHandlers;
 public class UserRegisteredEventHandler(IUserRepository userRepository,
@@ -13,7 +14,11 @@ public class UserRegisteredEventHandler(IUserRepository userRepository,
 {
 	public async Task Consume(ConsumeContext<UserRegisteredEvent> context)
 	{
-		logger.LogInformation("Integration Event handled: {integrationEvent}", context.Message.GetType().Name);
+		var eventData = JsonSerializer.Serialize(context.Message, new JsonSerializerOptions { WriteIndented = true });
+
+		logger.LogInformation("Handling Integration Event: {integrationEvent}\n EventData: {eventData}",
+			context.Message.GetType().Name,
+			eventData);
 
 		var user = PrepareUserFromEvent(context.Message);
 
