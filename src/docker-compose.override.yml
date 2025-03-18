@@ -37,8 +37,12 @@ services:
       - Jwt__Issuer=AuthService
       - Jwt__Audience=Microservices
       - Jwt__Key=YourSuperVeryVeryLongSecretKeyHere
+      - MessageBroker__Host=amqp://confy-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
     depends_on:
       - authenticationdb
+      - messagebroker
     ports:
       - "6000:8080"
       - "6060:8081"

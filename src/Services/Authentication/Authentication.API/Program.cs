@@ -1,5 +1,6 @@
 using Authentication.API;
 using Authentication.API.DAL;
+using Shared.Messaging.MassTransit;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -7,6 +8,8 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
 	.AddApplicationServices()
 	.AddInfrastructure(builder.Configuration);
+
+builder.Services.AddMessageBroker(builder.Configuration);
 
 builder.Services.AddControllers();
 
