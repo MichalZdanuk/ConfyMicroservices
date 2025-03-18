@@ -17,6 +17,17 @@ services:
     ports:
       - "1440:1433"
 
+  messagebroker:
+    container_name: messagebroker
+    hostname: confy-mq
+    environment:
+      - RABBITMQ_DEFAULT_USER=guest
+      - RABBITMQ_DEFAULT_PASS=guest
+    restart: always
+    ports:
+      - "5672:5672"
+      - "15672:15672"
+
   authentication.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development

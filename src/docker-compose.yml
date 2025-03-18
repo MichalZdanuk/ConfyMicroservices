@@ -5,6 +5,9 @@ services:
   conferencemanagementdb:
     image: mcr.microsoft.com/mssql/server
 
+  messagebroker:
+    image: rabbitmq:management
+
   authentication.api:
     image: ${DOCKER_REGISTRY-}authenticationapi
     build:
