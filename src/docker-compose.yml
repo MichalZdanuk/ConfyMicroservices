@@ -2,6 +2,9 @@ services:
   authenticationdb:
     image: mcr.microsoft.com/mssql/server
 
+  conferencemanagementdb:
+    image: mcr.microsoft.com/mssql/server
+
   authentication.api:
     image: ${DOCKER_REGISTRY-}authenticationapi
     build:

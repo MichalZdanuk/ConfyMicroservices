@@ -8,6 +8,15 @@ services:
     ports:
       - "1439:1433"
 
+  conferencemanagementdb:
+    container_name: conferencemanagementdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=HardPassword12345678abc!
+    restart: always
+    ports:
+      - "1440:1433"
+
   authentication.api:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
