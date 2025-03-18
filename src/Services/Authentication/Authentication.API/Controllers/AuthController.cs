@@ -19,7 +19,7 @@ namespace Authentication.API.Controllers
         [HttpPost("register")]
         public async Task<ActionResult> Register([FromBody] RegisterDto dto)
         {
-            var command = new RegisterCommand(dto.Email, dto.Password);
+            var command = new RegisterCommand(dto.FirstName, dto.LastName, dto.Email, dto.Password);
 
             await mediator.Send(command);
 

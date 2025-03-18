@@ -5,6 +5,7 @@ using Authentication.API.DAL;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Authentication.API.Dal.Migrations
 {
     [DbContext(typeof(AuthenticationDbContext))]
-    partial class AuthenticationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250318134422_Authentication_Extend_User_By_Fullname")]
+    partial class Authentication_Extend_User_By_Fullname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
