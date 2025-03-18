@@ -17,6 +17,15 @@ services:
     ports:
       - "1440:1433"
 
+  notificationdb:
+    container_name: notificationdb
+    environment:
+      - ACCEPT_EULA=Y
+      - SA_PASSWORD=HardPassword12345678abc!
+    restart: always
+    ports:
+      - "1442:1433"
+
   messagebroker:
     container_name: messagebroker
     hostname: confy-mq
