@@ -1,4 +1,5 @@
 ﻿using ConferenceManagement.Application.Data;
+using ConferenceManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -10,6 +11,8 @@ public class ConferenceManagementDbContext
 		: base(options)
 	{
 	}
+
+	public DbSet<User> Users { get; set; }
 
 	public async Task<int> SaveChangesAsync()
 	{
