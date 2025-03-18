@@ -1,7 +1,3 @@
-using Authentication.API;
-using Authentication.API.DAL;
-using Shared.Messaging.MassTransit;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

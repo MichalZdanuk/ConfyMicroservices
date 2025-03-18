@@ -1,8 +1,3 @@
-using Notification.API;
-using Notification.Application;
-using Notification.Infrastructure;
-using Shared.Context;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

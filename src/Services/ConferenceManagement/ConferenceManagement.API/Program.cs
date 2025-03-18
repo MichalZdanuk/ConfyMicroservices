@@ -1,8 +1,3 @@
-using ConferenceManagement.API;
-using ConferenceManagement.Application;
-using ConferenceManagement.Infrastructure;
-using Shared.Context;
-
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
