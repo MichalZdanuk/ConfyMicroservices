@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Shared.Behaviors;
+using Shared.Context;
 using System.Reflection;
 
 namespace ConferenceManagement.Application;
@@ -12,6 +13,8 @@ public static class DependencyInjection
 			config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
 			config.AddOpenBehavior(typeof(LoggingBehavior<,>));
 		});
+
+		services.AddConfyHttpContext();
 
 		return services;
 	}
