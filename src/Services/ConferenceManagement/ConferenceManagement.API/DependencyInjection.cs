@@ -15,7 +15,7 @@ public static class DependencyInjection
 
 	public static WebApplication UseApiServices(this WebApplication app)
 	{
-		app.UseExceptionHandler();
+		app.UseExceptionHandler(options => { });
 		app.UseHealthChecks();
 
 		return app;
