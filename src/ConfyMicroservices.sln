@@ -35,6 +35,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceManagement.Applic
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConferenceManagement.Infrastructure", "Services\ConferenceManagement\ConferenceManagement.Infrastructure\ConferenceManagement.Infrastructure.csproj", "{212128DD-17A4-44FA-BBE5-1588B005F761}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Notification", "Notification", "{92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.API", "Services\Notification\Notification.API\Notification.API.csproj", "{EF142EF7-8F7B-4495-9134-DE6C3C3728C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -81,6 +85,10 @@ Global
 		{212128DD-17A4-44FA-BBE5-1588B005F761}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{212128DD-17A4-44FA-BBE5-1588B005F761}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{212128DD-17A4-44FA-BBE5-1588B005F761}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF142EF7-8F7B-4495-9134-DE6C3C3728C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF142EF7-8F7B-4495-9134-DE6C3C3728C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF142EF7-8F7B-4495-9134-DE6C3C3728C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF142EF7-8F7B-4495-9134-DE6C3C3728C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -97,5 +105,7 @@ Global
 		{1229A6A1-157C-44EA-9C1B-B9E66CEAFCA6} = {8355BFFF-CF37-4694-9971-C66AA984C304}
 		{E8BC17BF-8B90-4DDB-8E95-85ACA68E6771} = {8355BFFF-CF37-4694-9971-C66AA984C304}
 		{212128DD-17A4-44FA-BBE5-1588B005F761} = {8355BFFF-CF37-4694-9971-C66AA984C304}
+		{92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B} = {B23327F1-593B-42BD-B809-D097E5A019D5}
+		{EF142EF7-8F7B-4495-9134-DE6C3C3728C4} = {92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B}
 	EndGlobalSection
 EndGlobal
