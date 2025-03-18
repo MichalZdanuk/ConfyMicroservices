@@ -13,6 +13,11 @@ FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
 ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/ConferenceManagement/ConferenceManagement.API/ConferenceManagement.API.csproj", "Services/ConferenceManagement/ConferenceManagement.API/"]
+COPY ["Shared/Shared/Shared.csproj", "Shared/Shared/"]
+COPY ["Services/ConferenceManagement/ConferenceManagement.Application/ConferenceManagement.Application.csproj", "Services/ConferenceManagement/ConferenceManagement.Application/"]
+COPY ["Shared/Shared.Messaging/Shared.Messaging.csproj", "Shared/Shared.Messaging/"]
+COPY ["Services/ConferenceManagement/ConferenceManagement.Domain/ConferenceManagement.Domain.csproj", "Services/ConferenceManagement/ConferenceManagement.Domain/"]
+COPY ["Services/ConferenceManagement/ConferenceManagement.Infrastructure/ConferenceManagement.Infrastructure.csproj", "Services/ConferenceManagement/ConferenceManagement.Infrastructure/"]
 RUN dotnet restore "./Services/ConferenceManagement/ConferenceManagement.API/ConferenceManagement.API.csproj"
 COPY . .
 WORKDIR "/src/Services/ConferenceManagement/ConferenceManagement.API"
