@@ -19,5 +19,15 @@ public class UserConfiguration : BaseEntityConfiguration<User>,
 		builder.Property(u => u.UserRole)
 			.IsRequired()
 			.HasConversion(new UserRoleEnumConverter());
+
+		builder.ComplexProperty(
+			u => u.FullName, fullNameBuilder =>
+			{
+				fullNameBuilder.Property(f => f.FirstName)
+					.IsRequired();
+
+				fullNameBuilder.Property(f => f.LastName)
+					.IsRequired();
+			});
 	}
 }

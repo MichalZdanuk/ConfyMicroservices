@@ -5,6 +5,7 @@ using ConferenceManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -12,9 +13,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ConferenceManagement.Infrastructure.Data.Migrations
 {
     [DbContext(typeof(ConferenceManagementDbContext))]
-    partial class ConferenceManagementDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250318135239_ConferenceManagement_Extend_User_By_Fullname")]
+    partial class ConferenceManagement_Extend_User_By_Fullname
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

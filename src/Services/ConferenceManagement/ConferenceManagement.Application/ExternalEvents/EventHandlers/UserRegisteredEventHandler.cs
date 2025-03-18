@@ -1,6 +1,7 @@
 ﻿using ConferenceManagement.Application.Data;
 using ConferenceManagement.Domain.Entities;
 using ConferenceManagement.Domain.Repositories;
+using ConferenceManagement.Domain.ValueObjects;
 using MassTransit;
 using Microsoft.Extensions.Logging;
 using Shared.Messaging.Events;
@@ -30,6 +31,7 @@ public class UserRegisteredEventHandler(IUserRepository userRepository,
 	private User PrepareUserFromEvent(UserRegisteredEvent userRegisteredEvent)
 	{
 		var user = User.Create(userRegisteredEvent.UserId,
+			FullName.Of(userRegisteredEvent.FirstName, userRegisteredEvent.LastName),
 			userRegisteredEvent.Email,
 			userRegisteredEvent.UserRole);
 

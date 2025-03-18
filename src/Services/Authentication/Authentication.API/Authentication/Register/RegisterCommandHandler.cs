@@ -21,6 +21,8 @@ public class RegisterCommandHandler(ICustomAuthService customAuthService,
 		=> new UserRegisteredEvent()
 			{
 				UserId = user.Id,
+				FirstName = user.FullName.FirstName,
+				LastName = user.FullName.LastName,
 				Email = user.Email,
 				UserRole = user.UserRole
 			};
