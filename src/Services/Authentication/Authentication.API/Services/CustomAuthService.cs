@@ -11,7 +11,7 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 	IConfiguration configuration)
 	: ICustomAuthService
 {
-	public async Task Register(string email, string password)
+	public async Task<User> Register(string email, string password)
 	{
 		if (await dbContext.Users.AnyAsync(u => u.Email == email))
 		{
@@ -22,6 +22,8 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 
 		dbContext.Users.Add(user);
 		await dbContext.SaveChangesAsync();
+
+		return user;
 	}
 
 	public async Task<string> Login(string email, string password)

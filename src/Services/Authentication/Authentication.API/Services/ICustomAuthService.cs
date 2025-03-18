@@ -2,6 +2,6 @@
 
 public interface ICustomAuthService
 {
-	public Task Register(string email, string password);
+	public Task<User> Register(string email, string password);
 	public Task<string> Login(string email, string password);
 }

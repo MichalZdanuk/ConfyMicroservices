@@ -1,4 +1,7 @@
-﻿using ConferenceManagement.Infrastructure.Data;
+﻿using ConferenceManagement.Application.Data;
+using ConferenceManagement.Domain.Repositories;
+using ConferenceManagement.Infrastructure.Data;
+using ConferenceManagement.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
@@ -22,11 +25,14 @@ public static class DependencyInjection
 			options.UseSqlServer(connectionString);
 		});
 
+		services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ConferenceManagementDbContext>());
+
 		return services;
 	}
 
 	private static IServiceCollection AddRepositories(this IServiceCollection services)
 	{
+		services.AddScoped<IUserRepository, UserRepository>();
 
 		return services;
 	}

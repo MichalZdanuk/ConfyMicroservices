@@ -7,12 +7,13 @@ public class User : Entity
 	public string Email { get; private set; } = string.Empty;
 	public UserRole UserRole { get; private set; }
 
-	public static User Create(string email,
-		string passwordHash, UserRole userRole)
+	public static User Create(Guid id,
+		string email,
+		UserRole userRole)
 	{
 		return new User()
 		{
-			Id = Guid.NewGuid(),
+			Id = id,
 			Email = email,
 			UserRole = userRole,
 		};
