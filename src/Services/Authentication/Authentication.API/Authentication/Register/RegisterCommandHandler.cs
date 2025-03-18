@@ -1,6 +1,5 @@
 ﻿using Authentication.API.Services;
 using MassTransit;
-using Shared.Enums;
 using Shared.Messaging.Events;
 
 namespace Authentication.API.Authentication.Register;
