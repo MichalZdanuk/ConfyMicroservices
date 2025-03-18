@@ -6,6 +6,7 @@ var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services
+	.AddApiServices(builder.Configuration)
 	.AddApplicationServices()
 	.AddInfrastructure(builder.Configuration);
 
@@ -23,6 +24,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 
 app.UseAuthorization();
+app.UseApiServices();
 
 app.MapControllers();
 

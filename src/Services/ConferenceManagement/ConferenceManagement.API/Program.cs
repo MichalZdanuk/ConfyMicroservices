@@ -1,3 +1,4 @@
+using ConferenceManagement.API;
 using ConferenceManagement.Application;
 using ConferenceManagement.Infrastructure;
 using Shared.Context;
@@ -8,6 +9,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services
 	.AddApplication(builder.Configuration)
 	.AddInfrastructure(builder.Configuration)
+	.AddApiServices(builder.Configuration)
 	.AddConfyAuthentication(builder.Configuration);
 
 builder.Services.AddControllers();
@@ -22,6 +24,7 @@ if (app.Environment.IsDevelopment())
 // Configure the HTTP request pipeline.
 app.UseAuthentication();
 app.UseAuthorization();
+app.UseApiServices();
 
 app.MapControllers();
 
