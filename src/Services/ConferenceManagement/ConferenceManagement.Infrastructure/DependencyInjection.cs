@@ -30,12 +30,4 @@ public static class DependencyInjection
 
 		return services;
 	}
-
-	private static IServiceCollection AddCustomInterceptors(this IServiceCollection services)
-	{
-		services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-		services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
-
-		return services;
-	}
 }

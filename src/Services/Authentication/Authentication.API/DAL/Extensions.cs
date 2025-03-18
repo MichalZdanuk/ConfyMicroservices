@@ -10,8 +10,7 @@ public static class Extensions
 	{
 		var connectionString = configuration.GetConnectionString("Database");
 
-		services.AddScoped<ISaveChangesInterceptor, AuditableEntityInterceptor>();
-		services.AddScoped<ISaveChangesInterceptor, DispatchDomainEventsInterceptor>();
+		services.AddCustomInterceptors();
 
 		services.AddDbContext<AuthenticationDbContext>((sp, options) =>
 		{
