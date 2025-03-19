@@ -4,8 +4,8 @@ using Shared.Domain;
 namespace ConferenceManagement.Domain.Entities;
 public class Lecture : Aggregate
 {
-	private readonly List<Guid> _prelegentIds = new();
-	public IReadOnlyList<Guid> PrelegentIds => _prelegentIds.AsReadOnly();
+	private readonly List<LectureAssignment> _lectureAssignments = new();
+	public IReadOnlyList<LectureAssignment> LectureAssignments => _lectureAssignments.AsReadOnly();
 
 	public Guid ConferenceId { get; private set; }
 	public LectureDetails LectureDetails { get; private set; } = default!;
@@ -26,17 +26,19 @@ public class Lecture : Aggregate
 
 	public void AddPrelegent(Guid prelegentId)
 	{
-		if (!_prelegentIds.Contains(prelegentId))
+		if (!_lectureAssignments.Any(x => x.PrelegentId == prelegentId))
 		{
-			_prelegentIds.Add(prelegentId);
+			var assignment = LectureAssignment.Create(Id, prelegentId);
+			_lectureAssignments.Add(assignment);
 		}
 	}
 
 	public void RemovePrelegent(Guid prelegentId)
 	{
-		if (_prelegentIds.Contains(prelegentId))
+		var assignment = _lectureAssignments.FirstOrDefault(x => x.PrelegentId == prelegentId);
+		if (assignment is not null)
 		{
-			_prelegentIds.Remove(prelegentId);
+			_lectureAssignments.Remove(assignment);
 		}
 	}
 }
