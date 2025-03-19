@@ -3,6 +3,9 @@
 namespace ConferenceManagement.Domain.Entities;
 public class Prelegent : Entity
 {
+	private readonly List<LectureAssignment> _lectureAssignments = new();
+	public IReadOnlyList<LectureAssignment> LectureAssignments => _lectureAssignments.AsReadOnly();
+
 	public string Name { get; private set; } = default!;
 	public string Bio { get; private set; } = default!;
 
