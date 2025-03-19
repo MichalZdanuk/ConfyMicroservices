@@ -13,6 +13,10 @@ public class ConferenceManagementDbContext
 	}
 
 	public DbSet<User> Users { get; set; }
+	public DbSet<Conference> Conferences { get; set; }
+	public DbSet<Lecture> Lectures { get; set; }
+	public DbSet<Prelegent> Prelegents { get; set; }
+
 
 	public async Task<int> SaveChangesAsync()
 	{
