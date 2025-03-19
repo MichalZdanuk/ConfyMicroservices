@@ -7,7 +7,7 @@ using Microsoft.Extensions.Logging;
 using Shared.Messaging.Events;
 using System.Text.Json;
 
-namespace ConferenceManagement.Application.ExternalEvents.EventHandlers;
+namespace ConferenceManagement.Application.EventHandlers.Integration;
 public class UserRegisteredEventHandler(IUserRepository userRepository,
 	IApplicationDbContext dbContext,
 	ILogger<UserRegisteredEventHandler> logger)
