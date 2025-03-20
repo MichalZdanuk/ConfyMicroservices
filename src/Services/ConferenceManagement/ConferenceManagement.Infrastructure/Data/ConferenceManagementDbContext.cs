@@ -1,11 +1,11 @@
-﻿using ConferenceManagement.Application.Data;
+﻿using ConferenceManagement.Domain.Data;
 using ConferenceManagement.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
 namespace ConferenceManagement.Infrastructure.Data;
 public class ConferenceManagementDbContext
-	: DbContext, IApplicationDbContext
+	: DbContext, IDbContext
 {
 	public ConferenceManagementDbContext(DbContextOptions<ConferenceManagementDbContext> options)
 		: base(options)
@@ -16,6 +16,7 @@ public class ConferenceManagementDbContext
 	public DbSet<Conference> Conferences { get; set; }
 	public DbSet<Lecture> Lectures { get; set; }
 	public DbSet<Prelegent> Prelegents { get; set; }
+	public DbSet<LectureAssignment> LectureAssignments { get; set; }
 
 
 	public async Task<int> SaveChangesAsync()

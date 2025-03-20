@@ -1,4 +1,4 @@
-﻿using ConferenceManagement.Application.Data;
+﻿using ConferenceManagement.Domain.Data;
 using ConferenceManagement.Domain.Entities;
 using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Domain.ValueObjects;
@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
 public class UserRegisteredEventHandler(IUserRepository userRepository,
-	IApplicationDbContext dbContext,
+	IDbContext dbContext,
 	ILogger<UserRegisteredEventHandler> logger)
 	: IConsumer<UserRegisteredEvent>
 {

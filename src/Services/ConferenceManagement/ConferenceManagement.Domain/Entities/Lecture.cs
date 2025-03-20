@@ -24,6 +24,11 @@ public class Lecture : Aggregate
 		};
 	}
 
+	public void Update(LectureDetails details)
+	{
+		LectureDetails = details;
+	}
+
 	public void AddPrelegent(Guid prelegentId)
 	{
 		if (!_lectureAssignments.Any(x => x.PrelegentId == prelegentId))

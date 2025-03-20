@@ -1,4 +1,5 @@
-﻿using ConferenceManagement.Application.Data;
+﻿using ConferenceManagement.Domain.Data;
+using ConferenceManagement.Domain.DomainService;
 using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Infrastructure.Data;
 using ConferenceManagement.Infrastructure.Repositories;
@@ -25,7 +26,9 @@ public static class DependencyInjection
 			options.UseSqlServer(connectionString);
 		});
 
-		services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<ConferenceManagementDbContext>());
+		services.AddScoped<IDbContext>(provider => provider.GetRequiredService<ConferenceManagementDbContext>());
+
+		services.AddDomainServices();
 
 		return services;
 	}
@@ -33,6 +36,14 @@ public static class DependencyInjection
 	private static IServiceCollection AddRepositories(this IServiceCollection services)
 	{
 		services.AddScoped<IUserRepository, UserRepository>();
+		services.AddScoped<IConferenceRepository, ConferenceRepository>();
+
+		return services;
+	}
+
+	private static IServiceCollection AddDomainServices(this IServiceCollection services)
+	{
+		services.AddScoped<IConferenceDomainService, ConferenceDomainService>();
 
 		return services;
 	}

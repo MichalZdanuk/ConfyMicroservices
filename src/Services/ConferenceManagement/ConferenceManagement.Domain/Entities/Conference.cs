@@ -29,6 +29,13 @@ public class Conference : Aggregate
 		return conference;
 	}
 
+	public void Update(string name, ConferenceDetails details, Address address)
+	{
+		Name = name;
+		ConferenceDetails = details;
+		Address = address;
+	}
+
 	public void AddLecture(Guid lectureId)
 	{
 		if (!_lectureIds.Contains(lectureId))

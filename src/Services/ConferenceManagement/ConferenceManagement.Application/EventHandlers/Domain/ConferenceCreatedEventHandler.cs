@@ -10,6 +10,6 @@ public class ConferenceCreatedEventHandler(ILogger<ConferenceCreatedEventHandler
 	{
 		logger.LogInformation("Domain event handled: {domainEvent}", domainEvent.GetType().Name);
 
-		throw new NotImplementedException();
+		return Task.CompletedTask;
 	}
 }

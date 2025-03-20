@@ -1,0 +1,2 @@
+﻿namespace ConferenceManagement.Application.Conference.CreateConference;
+public record CreateConferenceDto(string Name, CreateConferenceDetailsDto ConferenceDetailsDto, CreateAddressDto AddressDto);
