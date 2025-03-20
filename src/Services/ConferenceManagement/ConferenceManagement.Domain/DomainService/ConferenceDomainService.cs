@@ -6,6 +6,7 @@ using ConferenceManagement.Domain.ValueObjects;
 
 namespace ConferenceManagement.Domain.DomainService;
 public class ConferenceDomainService(IConferenceRepository conferenceRepository,
+	ILectureRepository lectureRepository,
 	IDbContext dbContext)
 	: IConferenceDomainService
 {
@@ -36,6 +37,15 @@ public class ConferenceDomainService(IConferenceRepository conferenceRepository,
 	public async Task<List<Conference>> BrowseConferenceAsync()
 	{
 		return await conferenceRepository.GetAllAsync();
+	}
+
+	public async Task<(Conference? conference, List<Lecture>? lectures)> GetConferenceWithLectures(Guid conferenceId)
+	{
+		var conference = await conferenceRepository.GetByIdAsync(conferenceId);
+
+		var lectures = await lectureRepository.GetLecturesByConferenceIdAsync(conferenceId);
+
+		return (conference, lectures);
 	}
 
 	public async Task UpdateConferenceAsync(Guid conferenceId, string name, ConferenceDetails details, Address address)
