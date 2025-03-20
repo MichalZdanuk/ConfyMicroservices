@@ -11,6 +11,7 @@ public class BrowseConferencesQueryHandler(IConferenceDomainService conferenceDo
 
 		var conferenceDtos = conferences
 			.Select(c => new ConferenceDto(
+				c.Id,
 				c.Name,
 				new ConferenceDetailsDto(
 					c.ConferenceDetails.StartDate,

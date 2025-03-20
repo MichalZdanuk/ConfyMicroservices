@@ -30,6 +30,7 @@ public class GetConferenceQueryHandler(IConferenceDomainService conferenceDomain
 				conference.Address.ZipCode
 			),
 			lectures.Select(l => new LectureDetailsDto(
+				l.Id,
 				l.LectureDetails.Title,
 				l.LectureDetails.StartDate,
 				l.LectureDetails.EndDate
