@@ -1,4 +1,5 @@
-﻿using ConferenceManagement.Application.Conference.CreateConference;
+﻿using ConferenceManagement.Application.Conference.BrowseConferences;
+using ConferenceManagement.Application.Conference.CreateConference;
 using ConferenceManagement.Application.Conference.UpdateConfrerence;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -13,9 +14,13 @@ public class ConferencesController(IMediator mediator)
 	: ControllerBase
 {
 	[HttpGet]
-	public async Task<IActionResult> Get()
+	public async Task<ActionResult<IReadOnlyList<ConferenceDto>>> Get()
 	{
-		return Ok("ok");
+		var query = new BrowseConferencesQuery();
+
+		var result = await mediator.Send(query);
+
+		return Ok(result);
 	}
 
 	[HttpPost]
