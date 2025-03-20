@@ -9,9 +9,25 @@ public class ConferenceRepository(IDbContext context)
 {
 	public async Task<Conference?> GetByIdAsync(Guid id)
 	{
-		return await context.Conferences
-			.Include(c => c.LectureIds)
-			.FirstOrDefaultAsync(c => c.Id == id);
+		var conference = await context.Conferences
+		.FirstOrDefaultAsync(c => c.Id == id);
+
+		if (conference is null)
+		{
+			return null;
+		}
+
+		var lectureIds = await context.Lectures
+			.Where(l => l.ConferenceId == id)
+			.Select(l => l.Id)
+			.ToListAsync();
+
+		foreach (var lectureId in lectureIds)
+		{
+			conference.AddLecture(lectureId);
+		}
+
+		return conference;
 	}
 
 	public async Task<List<Conference>> GetAllAsync()

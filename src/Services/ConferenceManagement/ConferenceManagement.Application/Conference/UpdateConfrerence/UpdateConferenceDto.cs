@@ -1,0 +1,2 @@
+﻿namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
+public record UpdateConferenceDto(string Name, UpdateConferenceDetailsDto ConferenceDetailsDto, UpdateAddressDto AddressDto);

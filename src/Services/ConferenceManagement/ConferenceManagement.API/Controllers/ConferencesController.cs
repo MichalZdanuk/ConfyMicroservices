@@ -1,4 +1,5 @@
 ﻿using ConferenceManagement.Application.Conference.CreateConference;
+using ConferenceManagement.Application.Conference.UpdateConfrerence;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -27,6 +28,17 @@ public class ConferencesController(IMediator mediator)
 		var uri = $"/conferences/{command.Id}";
 
 		return Created(uri, new { Id = command.Id });
+	}
+
+	[HttpPut("{id}")]
+	public async Task<ActionResult> UpdateConference([FromRoute]Guid id, [FromBody]UpdateConferenceDto dto)
+	{
+		var command = new UpdateConferenceCommand(id, dto.Name,
+			dto.ConferenceDetailsDto, dto.AddressDto);
+
+		await mediator.Send(command);
+
+		return Accepted();
 	}
 
 }
