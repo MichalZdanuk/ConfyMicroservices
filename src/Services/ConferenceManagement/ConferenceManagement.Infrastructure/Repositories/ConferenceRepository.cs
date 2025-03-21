@@ -30,9 +30,17 @@ public class ConferenceRepository(IDbContext context)
 		return conference;
 	}
 
-	public async Task<List<Conference>> GetAllAsync()
+	public async Task<List<Conference>> GetAsync(int pageNumber, int pageSize)
 	{
-		return await context.Conferences.ToListAsync();
+		return await context.Conferences
+			.Skip((pageNumber - 1) * pageSize)
+			.Take(pageSize)
+			.ToListAsync();
+	}
+
+	public async Task<int> CountAsync()
+	{
+		return await context.Conferences.CountAsync();
 	}
 
 	public async Task AddAsync(Conference conference)

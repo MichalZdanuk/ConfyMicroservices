@@ -5,6 +5,7 @@ using ConferenceManagement.Application.Conference.UpdateConfrerence;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Shared.Pagination;
 
 namespace ConferenceManagement.API.Controllers;
 
@@ -15,9 +16,9 @@ public class ConferencesController(IMediator mediator)
 	: ControllerBase
 {
 	[HttpGet]
-	public async Task<ActionResult<IReadOnlyList<ConferenceDto>>> Get()
+	public async Task<ActionResult<PaginationResult<ConferenceDto>>> Get([FromQuery] PaginationRequest request)
 	{
-		var query = new BrowseConferencesQuery();
+		var query = new BrowseConferencesQuery(request);
 
 		var result = await mediator.Send(query);
 

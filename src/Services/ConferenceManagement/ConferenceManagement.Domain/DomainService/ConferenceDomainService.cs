@@ -34,9 +34,14 @@ public class ConferenceDomainService(IConferenceRepository conferenceRepository,
 		await dbContext.SaveChangesAsync();
 	}
 
-	public async Task<List<Conference>> BrowseConferenceAsync()
+	public async Task<List<Conference>> BrowseConferenceAsync(int pageNumber, int pageSize)
 	{
-		return await conferenceRepository.GetAllAsync();
+		return await conferenceRepository.GetAsync(pageNumber, pageSize);
+	}
+
+	public async Task<int> CountAsync()
+	{
+		return await conferenceRepository.CountAsync();
 	}
 
 	public async Task<(Conference? conference, List<Lecture>? lectures)> GetConferenceWithLectures(Guid conferenceId)

@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Shared.Pagination;
 
 namespace ConferenceManagement.Application.Conference.BrowseConferences;
-public class BrowseConferencesQuery() : IRequest<IReadOnlyList<ConferenceDto>>;
+public record BrowseConferencesQuery(PaginationRequest Pagination) : IRequest<PaginationResult<ConferenceDto>>;
