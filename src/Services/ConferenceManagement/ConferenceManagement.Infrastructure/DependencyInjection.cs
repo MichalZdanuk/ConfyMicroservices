@@ -1,5 +1,4 @@
 ﻿using ConferenceManagement.Domain.Data;
-using ConferenceManagement.Domain.DomainService;
 using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Infrastructure.Data;
 using ConferenceManagement.Infrastructure.Repositories;
@@ -28,8 +27,6 @@ public static class DependencyInjection
 
 		services.AddScoped<IDbContext>(provider => provider.GetRequiredService<ConferenceManagementDbContext>());
 
-		services.AddDomainServices();
-
 		return services;
 	}
 
@@ -39,13 +36,6 @@ public static class DependencyInjection
 		services.AddScoped<IConferenceRepository, ConferenceRepository>();
 		services.AddScoped<ILectureRepository, LectureRepository>();
 		services.AddScoped<IPrelegentRepository, PrelegentRepository>();
-
-		return services;
-	}
-
-	private static IServiceCollection AddDomainServices(this IServiceCollection services)
-	{
-		services.AddScoped<IConferenceDomainService, ConferenceDomainService>();
 
 		return services;
 	}

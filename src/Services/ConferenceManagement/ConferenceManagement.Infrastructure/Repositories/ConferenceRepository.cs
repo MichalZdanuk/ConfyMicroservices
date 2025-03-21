@@ -30,7 +30,7 @@ public class ConferenceRepository(IDbContext context)
 		return conference;
 	}
 
-	public async Task<List<Conference>> GetAsync(int pageNumber, int pageSize)
+	public async Task<List<Conference>> BrowseAsync(int pageNumber, int pageSize)
 	{
 		return await context.Conferences
 			.Skip((pageNumber - 1) * pageSize)

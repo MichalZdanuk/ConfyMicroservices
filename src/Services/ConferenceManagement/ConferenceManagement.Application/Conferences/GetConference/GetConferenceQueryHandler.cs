@@ -1,20 +1,23 @@
 ﻿using ConferenceManagement.Application.Conference.BrowseConferences;
-using ConferenceManagement.Domain.DomainService;
 using ConferenceManagement.Domain.Exceptions;
+using ConferenceManagement.Domain.Repositories;
 using MediatR;
 
 namespace ConferenceManagement.Application.Conference.GetConference;
-public class GetConferenceQueryHandler(IConferenceDomainService conferenceDomainService)
+public class GetConferenceQueryHandler(IConferenceRepository conferenceRepository,
+	ILectureRepository lectureRepository)
 	: IRequestHandler<GetConferenceQuery, GetConferenceDto>
 {
 	public async Task<GetConferenceDto> Handle(GetConferenceQuery query, CancellationToken cancellationToken)
 	{
-		var (conference, lectures) = await conferenceDomainService.GetConferenceWithLectures(query.ConferenceId);
+		var conference = await conferenceRepository.GetByIdAsync(query.ConferenceId);
 
 		if (conference is null)
 		{
 			throw new ConferenceNotFoundException(query.ConferenceId);
 		}
+
+		var lectures = await lectureRepository.GetLecturesByConferenceIdAsync(query.ConferenceId);
 
 		var conferenceDto = new GetConferenceDto(
 			conference.Name,

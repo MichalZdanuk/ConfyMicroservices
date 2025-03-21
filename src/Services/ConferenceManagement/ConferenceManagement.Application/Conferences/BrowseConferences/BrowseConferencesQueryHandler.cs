@@ -1,14 +1,14 @@
-﻿using ConferenceManagement.Domain.DomainService;
+﻿using ConferenceManagement.Domain.Repositories;
 using MediatR;
 using Shared.Pagination;
 
 namespace ConferenceManagement.Application.Conference.BrowseConferences;
-public class BrowseConferencesQueryHandler(IConferenceDomainService conferenceDomainService)
+public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<BrowseConferencesQuery, PaginationResult<ConferenceDto>>
 {
 	public async Task<PaginationResult<ConferenceDto>> Handle(BrowseConferencesQuery query, CancellationToken cancellationToken)
 	{
-		var conferences = await conferenceDomainService.BrowseConferenceAsync(query.Pagination.PageNumber, query.Pagination.PageSize);
+		var conferences = await conferenceRepository.BrowseAsync(query.Pagination.PageNumber, query.Pagination.PageSize);
 
 		var conferenceDtos = conferences
 			.Select(c => new ConferenceDto(
@@ -28,7 +28,7 @@ public class BrowseConferencesQueryHandler(IConferenceDomainService conferenceDo
 			))
 			.ToList();
 
-		var conferencesCount = await conferenceDomainService.CountAsync();
+		var conferencesCount = await conferenceRepository.CountAsync();
 
 		return new PaginationResult<ConferenceDto>(query.Pagination.PageNumber,
 			query.Pagination.PageSize,
