@@ -1,3 +1,4 @@
+using Authentication.API.Authentication.Create;
 using Authentication.API.Authentication.Login;
 using Authentication.API.Authentication.Register;
 using Microsoft.AspNetCore.Mvc;
@@ -35,5 +36,15 @@ namespace Authentication.API.Controllers
 
 			return Ok(response);
 		}
+
+        [HttpPost("create")]
+        public async Task<ActionResult<Guid>> CreateUser([FromBody]CreateUserDto dto)
+        {
+            var command = new CreateUserCommand(dto.FirstName, dto.LastName, dto.Email, dto.Password, dto.UserRole);
+
+            await mediator.Send(command);
+
+            return Created();
+        }
 	}
 }

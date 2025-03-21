@@ -1,8 +1,8 @@
 ﻿using Authentication.API.Authentication.Register;
-using Authentication.API.DAL;
 using Authentication.API.Exceptions;
 using Authentication.API.ValueObjects;
 using Microsoft.IdentityModel.Tokens;
+using Shared.Enums;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
@@ -13,16 +13,17 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 	IConfiguration configuration)
 	: ICustomAuthService
 {
-	public async Task<User> Register(RegisterCommand registerCommand)
+	public async Task<User> Register(string FirstName, string LastName, string Email, string Password, UserRole UserRole)
 	{
-		if (await dbContext.Users.AnyAsync(u => u.Email == registerCommand.Email))
+		if (await dbContext.Users.AnyAsync(u => u.Email == Email))
 		{
-			throw new EmailAlreadyTakenException(registerCommand.Email);
+			throw new EmailAlreadyTakenException(Email);
 		}
 
-		var user = User.Create(registerCommand.Email,
-			BCrypt.Net.BCrypt.HashPassword(registerCommand.Password),
-			FullName.Of(registerCommand.FirstName, registerCommand.LastName));
+		var user = User.Create(Email,
+			BCrypt.Net.BCrypt.HashPassword(Password),
+			FullName.Of(FirstName, LastName),
+			UserRole);
 
 		dbContext.Users.Add(user);
 		await dbContext.SaveChangesAsync();

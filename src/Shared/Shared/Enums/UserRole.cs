@@ -1,7 +1,7 @@
 ﻿namespace Shared.Enums;
 public enum UserRole
 {
-	Attendee,
-	Prelegent,
-	Host
+	Attendee = 1,
+	Prelegent = 2,
+	Host = 3
 }
