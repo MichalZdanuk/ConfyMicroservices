@@ -2,28 +2,31 @@
 using ConferenceManagement.Domain.ValueObjects;
 using MassTransit;
 using Microsoft.Extensions.Logging;
+using Shared.Messaging.Consumers;
 using Shared.Messaging.Events;
-using System.Text.Json;
+using Shared.UnitOfWork;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
-public class UserRegisteredEventHandler(IUserRepository userRepository,
-	//IDbContext dbContext,
-	ILogger<UserRegisteredEventHandler> logger)
-	: IConsumer<UserRegisteredEvent>
+public class UserRegisteredEventHandler
+	: TransactionalConsumer<UserRegisteredEvent>
 {
-	public async Task Consume(ConsumeContext<UserRegisteredEvent> context)
+	private readonly IUserRepository _userRepository;
+	private readonly ILogger<UserRegisteredEventHandler> _logger;
+
+	public UserRegisteredEventHandler(IUserRepository userRepository,
+		IUnitOfWork unitOfWork,
+		ILogger<UserRegisteredEventHandler> logger)
+		: base(unitOfWork, logger)
 	{
-		var eventData = JsonSerializer.Serialize(context.Message, new JsonSerializerOptions { WriteIndented = true });
+		_userRepository = userRepository;
+		_logger = logger;
+	}
 
-		logger.LogInformation("Handling Integration Event: {integrationEvent}\n EventData: {eventData}",
-			context.Message.GetType().Name,
-			eventData);
+	protected override async Task HandleMessage(ConsumeContext<UserRegisteredEvent> context)
+	{
+		var user = PrepareUserFromEvent(context.Message);
 
-		//var user = PrepareUserFromEvent(context.Message);
-
-		//await userRepository.AddUserAsync(user);
-
-		//await dbContext.SaveChangesAsync();
+		await _userRepository.AddUserAsync(user);
 	}
 
 	private User PrepareUserFromEvent(UserRegisteredEvent userRegisteredEvent)
