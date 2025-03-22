@@ -1,7 +1,4 @@
-﻿using ConferenceManagement.Domain.Repositories;
-using Shared.Pagination;
-
-namespace ConferenceManagement.Application.Conference.BrowseConferences;
+﻿namespace ConferenceManagement.Application.Conference.BrowseConferences;
 public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<BrowseConferencesQuery, PaginationResult<ConferenceDto>>
 {

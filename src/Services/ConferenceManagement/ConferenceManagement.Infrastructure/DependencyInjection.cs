@@ -1,8 +1,4 @@
-﻿using ConferenceManagement.Domain.Data;
-using ConferenceManagement.Domain.Repositories;
-using ConferenceManagement.Infrastructure.Data;
-using ConferenceManagement.Infrastructure.Repositories;
-using Microsoft.EntityFrameworkCore;
+﻿using ConferenceManagement.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;

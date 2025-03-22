@@ -1,5 +1,4 @@
 ﻿using ConferenceManagement.Domain.Entities;
-using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Domain.ValueObjects;
 using MassTransit;
 using Microsoft.Extensions.Logging;

@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Domain.Exceptions;
-using ConferenceManagement.Domain.Repositories;
-using ConferenceManagement.Domain.ValueObjects;
+﻿using ConferenceManagement.Domain.ValueObjects;
 
 namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
 public class UpdateCommandHandler(IConferenceRepository conferenceRepository)

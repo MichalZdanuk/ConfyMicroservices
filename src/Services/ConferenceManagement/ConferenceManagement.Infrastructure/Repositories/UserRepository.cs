@@ -1,8 +1,4 @@
-﻿using ConferenceManagement.Domain.Entities;
-using ConferenceManagement.Domain.Repositories;
-using ConferenceManagement.Infrastructure.Data;
-
-namespace ConferenceManagement.Infrastructure.Repositories;
+﻿namespace ConferenceManagement.Infrastructure.Repositories;
 public class UserRepository(ConferenceManagementDbContext context)
 	: IUserRepository
 {

@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Infrastructure.Data;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Builder;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace ConferenceManagement.Infrastructure;
