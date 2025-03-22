@@ -21,7 +21,7 @@ public class UserRegisteredEventHandler(IUserRepository userRepository,
 
 		//var user = PrepareUserFromEvent(context.Message);
 
-		//await userRepository.AddUser(user);
+		//await userRepository.AddUserAsync(user);
 
 		//await dbContext.SaveChangesAsync();
 	}

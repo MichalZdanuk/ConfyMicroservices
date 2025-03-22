@@ -5,7 +5,7 @@ public class ConferenceRepository(ConferenceManagementDbContext context)
 	public async Task<Conference?> GetByIdAsync(Guid id)
 	{
 		var conference = await context.Conferences
-		.FirstOrDefaultAsync(c => c.Id == id);
+			.FirstOrDefaultAsync(c => c.Id == id);
 
 		if (conference is null)
 		{
