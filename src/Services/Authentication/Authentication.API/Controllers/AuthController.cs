@@ -30,9 +30,9 @@ namespace Authentication.API.Controllers
 		[HttpPost("login")]
 		public async Task<ActionResult<LoginResponse>> Login([FromBody] LoginDto dto)
 		{
-			var command = new LoginCommand(dto.Email, dto.Password);
+			var query = new LoginQuery(dto.Email, dto.Password);
 
-			var response = await mediator.Send(command);
+			var response = await mediator.Send(query);
 
 			return Ok(response);
 		}
