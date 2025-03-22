@@ -28,8 +28,6 @@ public abstract class TransactionalConsumer<TMessage> : IConsumer<TMessage>
 			context.Message.GetType().Name,
 			eventData);
 
-		//await _unitOfWork.BeginTransactionAsync(context.CancellationToken);
-
 		try
 		{
 			await HandleMessage(context);

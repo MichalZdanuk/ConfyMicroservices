@@ -1,29 +1,32 @@
 ﻿using ConferenceManagement.Domain.Entities;
 using MassTransit;
 using Microsoft.Extensions.Logging;
+using Shared.Messaging.Consumers;
 using Shared.Messaging.Events;
-using System.Text.Json;
+using Shared.UnitOfWork;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
-public class PrelegentCreatedEventHandler(IPrelegentRepository prelegentRepository,
-	//IDbContext dbContext,
-	ILogger<PrelegentCreatedEventHandler> logger)
-	: IConsumer<PrelegentCreatedEvent>
+public class PrelegentCreatedEventHandler
+	: TransactionalConsumer<PrelegentCreatedEvent>
 {
-	public async Task Consume(ConsumeContext<PrelegentCreatedEvent> context)
+	private readonly IPrelegentRepository _prelegentRepository;
+	private readonly ILogger<PrelegentCreatedEventHandler> _logger;
+
+
+	public PrelegentCreatedEventHandler(IPrelegentRepository prelegentRepository,
+		IUnitOfWork unitOfWork,
+		ILogger<PrelegentCreatedEventHandler> logger)
+			: base(unitOfWork, logger)
 	{
-		var eventData = JsonSerializer.Serialize(context.Message, new JsonSerializerOptions { WriteIndented = true });
+		_prelegentRepository = prelegentRepository;
+		_logger = logger;
+	}
 
-		logger.LogInformation("Handling Integration Event: {integrationEvent}\n EventData: {eventData}",
-			context.Message.GetType().Name,
-			eventData);
+	protected override async Task HandleMessage(ConsumeContext<PrelegentCreatedEvent> context)
+	{
+		var prelegent = PreparePrelegentFromEvent(context.Message);
 
-
-		//var prelegent = PreparePrelegentFromEvent(context.Message);
-
-		//await prelegentRepository.AddPrelegentAsync(prelegent);
-
-		//await dbContext.SaveChangesAsync();
+		await _prelegentRepository.AddPrelegentAsync(prelegent);
 	}
 
 	private Prelegent PreparePrelegentFromEvent(PrelegentCreatedEvent prelegentCreatedEvent)
