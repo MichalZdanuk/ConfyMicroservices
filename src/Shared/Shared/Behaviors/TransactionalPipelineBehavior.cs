@@ -8,7 +8,7 @@ public class TransactionalPipelineBehavior<TRequest, TResponse>(
 	IUnitOfWork unitOfWork,
 	ILogger<TransactionalPipelineBehavior<TRequest, TResponse>> logger)
 		: IPipelineBehavior<TRequest, TResponse>
-	where TRequest : ICommand
+	where TRequest : ICommand<TResponse>
 {
 	public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
 	{
