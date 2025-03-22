@@ -2,6 +2,7 @@
 global using Microsoft.EntityFrameworkCore;
 global using System.Reflection;
 global using Shared.Exceptions;
+global using Shared.CQRS;
 global using Authentication.API.Entities;
 global using Authentication.API;
 global using Authentication.API.DAL;

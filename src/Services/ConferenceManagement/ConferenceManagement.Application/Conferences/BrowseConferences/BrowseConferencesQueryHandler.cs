@@ -1,5 +1,4 @@
 ﻿using ConferenceManagement.Domain.Repositories;
-using MediatR;
 using Shared.Pagination;
 
 namespace ConferenceManagement.Application.Conference.BrowseConferences;

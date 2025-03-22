@@ -1,7 +1,6 @@
 ﻿using ConferenceManagement.Application.Conference.BrowseConferences;
 using ConferenceManagement.Domain.Exceptions;
 using ConferenceManagement.Domain.Repositories;
-using MediatR;
 
 namespace ConferenceManagement.Application.Conference.GetConference;
 public class GetConferenceQueryHandler(IConferenceRepository conferenceRepository,

@@ -1,5 +1,4 @@
 ﻿using ConferenceManagement.Domain.Events;
-using MediatR;
 using Microsoft.Extensions.Logging;
 
 namespace ConferenceManagement.Application.EventHandlers.Domain;

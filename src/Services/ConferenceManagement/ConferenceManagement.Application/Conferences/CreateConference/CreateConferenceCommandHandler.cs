@@ -1,7 +1,5 @@
-﻿using ConferenceManagement.Domain.Data;
-using ConferenceManagement.Domain.Repositories;
+﻿using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Domain.ValueObjects;
-using MediatR;
 
 namespace ConferenceManagement.Application.Conference.CreateConference;
 public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepository)
@@ -12,7 +10,6 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 		var conference = RetrieveConferenceFromCommand(command);
 
 		await conferenceRepository.AddAsync(conference);
-
 	}
 
 	private ConferenceManagement.Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)

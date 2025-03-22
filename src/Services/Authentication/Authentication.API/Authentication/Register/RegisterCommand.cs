@@ -1,5 +1,4 @@
-﻿using Shared.CQRS;
-using Shared.Enums;
+﻿using Shared.Enums;
 
 namespace Authentication.API.Authentication.Register;
 

@@ -1,8 +1,6 @@
-﻿using ConferenceManagement.Domain.Data;
-using ConferenceManagement.Domain.Exceptions;
+﻿using ConferenceManagement.Domain.Exceptions;
 using ConferenceManagement.Domain.Repositories;
 using ConferenceManagement.Domain.ValueObjects;
-using MediatR;
 
 namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
 public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
