@@ -1,5 +1,4 @@
-﻿using Authentication.API.Authentication.Register;
-using Authentication.API.Exceptions;
+﻿using Authentication.API.Exceptions;
 using Authentication.API.ValueObjects;
 using Microsoft.IdentityModel.Tokens;
 using Shared.Enums;
@@ -26,7 +25,6 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 			UserRole);
 
 		dbContext.Users.Add(user);
-		await dbContext.SaveChangesAsync();
 
 		return user;
 	}

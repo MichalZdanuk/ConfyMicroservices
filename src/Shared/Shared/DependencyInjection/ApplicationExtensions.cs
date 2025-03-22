@@ -11,6 +11,7 @@ public static class ApplicationExtensions
 		{
 			config.RegisterServicesFromAssembly(assembly);
 			config.AddOpenBehavior(typeof(LoggingBehavior<,>));
+			config.AddOpenBehavior(typeof(TransactionalPipelineBehavior<,>));
 		});
 
 		return services;

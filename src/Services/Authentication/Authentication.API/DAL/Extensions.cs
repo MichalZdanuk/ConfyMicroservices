@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore.Diagnostics;
 using Shared.Interceptors;
+using Shared.UnitOfWork;
 
 namespace Authentication.API.DAL;
 
@@ -17,6 +18,8 @@ public static class Extensions
 			options.AddInterceptors(sp.GetServices<ISaveChangesInterceptor>());
 			options.UseSqlServer(connectionString);
 		});
+
+		services.AddScoped<IUnitOfWork, AuthenticationUnitOfWork>();
 
 		return services;
 	}

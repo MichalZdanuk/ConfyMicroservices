@@ -9,7 +9,7 @@ using System.Text.Json;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
 public class UserRegisteredEventHandler(IUserRepository userRepository,
-	IDbContext dbContext,
+	//IDbContext dbContext,
 	ILogger<UserRegisteredEventHandler> logger)
 	: IConsumer<UserRegisteredEvent>
 {
@@ -21,11 +21,11 @@ public class UserRegisteredEventHandler(IUserRepository userRepository,
 			context.Message.GetType().Name,
 			eventData);
 
-		var user = PrepareUserFromEvent(context.Message);
+		//var user = PrepareUserFromEvent(context.Message);
 
-		await userRepository.AddUser(user);
+		//await userRepository.AddUser(user);
 
-		await dbContext.SaveChangesAsync();
+		//await dbContext.SaveChangesAsync();
 	}
 
 	private User PrepareUserFromEvent(UserRegisteredEvent userRegisteredEvent)

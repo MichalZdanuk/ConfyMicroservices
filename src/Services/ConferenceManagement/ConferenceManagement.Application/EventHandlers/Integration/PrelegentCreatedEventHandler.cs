@@ -8,7 +8,7 @@ using System.Text.Json;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
 public class PrelegentCreatedEventHandler(IPrelegentRepository prelegentRepository,
-	IDbContext dbContext,
+	//IDbContext dbContext,
 	ILogger<PrelegentCreatedEventHandler> logger)
 	: IConsumer<PrelegentCreatedEvent>
 {
@@ -20,11 +20,12 @@ public class PrelegentCreatedEventHandler(IPrelegentRepository prelegentReposito
 			context.Message.GetType().Name,
 			eventData);
 
-		var prelegent = PreparePrelegentFromEvent(context.Message);
 
-		await prelegentRepository.AddPrelegentAsync(prelegent);
+		//var prelegent = PreparePrelegentFromEvent(context.Message);
 
-		await dbContext.SaveChangesAsync();
+		//await prelegentRepository.AddPrelegentAsync(prelegent);
+
+		//await dbContext.SaveChangesAsync();
 	}
 
 	private Prelegent PreparePrelegentFromEvent(PrelegentCreatedEvent prelegentCreatedEvent)

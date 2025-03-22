@@ -1,10 +1,11 @@
 ﻿using ConferenceManagement.Domain.Data;
 using ConferenceManagement.Domain.Entities;
 using ConferenceManagement.Domain.Repositories;
+using ConferenceManagement.Infrastructure.Data;
 using Microsoft.EntityFrameworkCore;
 
 namespace ConferenceManagement.Infrastructure.Repositories;
-public class ConferenceRepository(IDbContext context)
+public class ConferenceRepository(ConferenceManagementDbContext context)
 	: IConferenceRepository
 {
 	public async Task<Conference?> GetByIdAsync(Guid id)

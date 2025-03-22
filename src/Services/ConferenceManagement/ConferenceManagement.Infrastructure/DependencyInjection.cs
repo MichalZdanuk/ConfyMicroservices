@@ -7,6 +7,7 @@ using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Interceptors;
+using Shared.UnitOfWork;
 
 namespace ConferenceManagement.Infrastructure;
 public static class DependencyInjection
@@ -25,7 +26,7 @@ public static class DependencyInjection
 			options.UseSqlServer(connectionString);
 		});
 
-		services.AddScoped<IDbContext>(provider => provider.GetRequiredService<ConferenceManagementDbContext>());
+		services.AddScoped<IUnitOfWork, ConferenceManagementUnitOfWork>();
 
 		return services;
 	}

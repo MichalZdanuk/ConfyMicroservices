@@ -4,8 +4,7 @@ using ConferenceManagement.Domain.ValueObjects;
 using MediatR;
 
 namespace ConferenceManagement.Application.Conference.CreateConference;
-public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepository,
-	IDbContext dbContext)
+public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<CreateConferenceCommand>
 {
 	public async Task Handle(CreateConferenceCommand command, CancellationToken cancellationToken)
@@ -14,7 +13,6 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 
 		await conferenceRepository.AddAsync(conference);
 
-		await dbContext.SaveChangesAsync();
 	}
 
 	private ConferenceManagement.Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)

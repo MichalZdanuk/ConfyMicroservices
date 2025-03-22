@@ -1,3 +1,5 @@
-﻿namespace Authentication.API.Authentication.Login;
+﻿using Shared.CQRS;
 
-public record LoginCommand(string Email, string Password) : IRequest<LoginResponse>;
+namespace Authentication.API.Authentication.Login;
+
+public record LoginCommand(string Email, string Password) : ICommand<LoginResponse>;

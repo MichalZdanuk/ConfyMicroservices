@@ -5,8 +5,7 @@ using ConferenceManagement.Domain.ValueObjects;
 using MediatR;
 
 namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
-public class UpdateCommandHandler(IConferenceRepository conferenceRepository,
-	IDbContext dbContext)
+public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<UpdateConferenceCommand>
 {
 	public async Task Handle(UpdateConferenceCommand command, CancellationToken cancellationToken)
@@ -30,6 +29,5 @@ public class UpdateCommandHandler(IConferenceRepository conferenceRepository,
 		conference.Update(command.Name, updatedConferenceDetails, updatedAddress);
 
 		await conferenceRepository.UpdateAsync(conference);
-		await dbContext.SaveChangesAsync();
 	}
 }
