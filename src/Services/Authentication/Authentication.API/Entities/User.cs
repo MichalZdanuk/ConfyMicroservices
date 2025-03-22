@@ -9,12 +9,14 @@ public class User : Entity
 	public FullName FullName { get; private set; } = default!;
 	public string Email { get; private set; } = string.Empty;
 	public string PasswordHash { get; private set; } = string.Empty;
+	public string? Bio { get; private set; }
 	public UserRole UserRole { get; private set; }
 
 	public static User Create(string email,
 		string passwordHash,
 		FullName fullName,
-		UserRole userRole)
+		UserRole userRole,
+		string? bio = null)
 	{
 		return new User()
 		{
@@ -23,6 +25,7 @@ public class User : Entity
 			PasswordHash = passwordHash,
 			FullName = fullName,
 			UserRole = userRole,
+			Bio = bio,
 		};
 	}
 }

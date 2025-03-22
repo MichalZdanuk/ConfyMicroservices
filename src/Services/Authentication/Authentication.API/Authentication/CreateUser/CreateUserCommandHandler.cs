@@ -15,7 +15,8 @@ public class CreateUserCommandHandler(ICustomAuthService customAuthService,
 			command.LastName,
 			command.Email,
 			command.Password,
-			command.UserRole);
+			command.UserRole,
+			command.Bio);
 
 		await PublishIntegrationEvent(user, cancellationToken);
 	}
@@ -34,8 +35,8 @@ public class CreateUserCommandHandler(ICustomAuthService customAuthService,
 		=> new PrelegentCreatedEvent()
 		{
 			UserId = user.Id,
-			FirstName = user.FullName.FirstName,
-			LastName = user.FullName.LastName,
+			Name = string.Concat(user.FullName.FirstName, " ", user.FullName.LastName),
 			Email = user.Email,
+			Bio = user.Bio ?? string.Empty,
 		};
 }

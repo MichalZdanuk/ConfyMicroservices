@@ -12,7 +12,12 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 	IConfiguration configuration)
 	: ICustomAuthService
 {
-	public async Task<User> Register(string FirstName, string LastName, string Email, string Password, UserRole UserRole)
+	public async Task<User> Register(string FirstName,
+		string LastName,
+		string Email,
+		string Password,
+		UserRole UserRole,
+		string? Bio = null)
 	{
 		if (await dbContext.Users.AnyAsync(u => u.Email == Email))
 		{
@@ -22,7 +27,8 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 		var user = User.Create(Email,
 			BCrypt.Net.BCrypt.HashPassword(Password),
 			FullName.Of(FirstName, LastName),
-			UserRole);
+			UserRole,
+			Bio);
 
 		dbContext.Users.Add(user);
 

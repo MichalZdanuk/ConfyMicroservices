@@ -2,7 +2,7 @@
 public record PrelegentCreatedEvent : IntegrationEvent
 {
 	public Guid UserId { get; set; }
-	public string FirstName { get; set; } = default!;
-	public string LastName { get; set; } = default!;
+	public string Name { get; set; } = default!;
 	public string Email { get; set; } = default!;
+	public string Bio { get; set; } = default!;
 }

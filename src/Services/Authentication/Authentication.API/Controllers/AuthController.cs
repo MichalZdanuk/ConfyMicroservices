@@ -40,7 +40,7 @@ namespace Authentication.API.Controllers
         [HttpPost("create")]
         public async Task<ActionResult<Guid>> CreateUser([FromBody]CreateUserDto dto)
         {
-            var command = new CreateUserCommand(dto.FirstName, dto.LastName, dto.Email, dto.Password, dto.UserRole);
+            var command = new CreateUserCommand(dto.FirstName, dto.LastName, dto.Bio, dto.Email, dto.Password, dto.UserRole);
 
             await mediator.Send(command);
 

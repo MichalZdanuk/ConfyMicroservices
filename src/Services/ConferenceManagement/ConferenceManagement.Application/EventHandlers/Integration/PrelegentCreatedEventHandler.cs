@@ -32,8 +32,8 @@ public class PrelegentCreatedEventHandler
 	private Prelegent PreparePrelegentFromEvent(PrelegentCreatedEvent prelegentCreatedEvent)
 	{
 		var user = Prelegent.Create(prelegentCreatedEvent.UserId,
-			"name",
-			"bio");// TO DO: RETRIEVE FROM AUTHENTICATION SERVICE 
+			prelegentCreatedEvent.Name,
+			prelegentCreatedEvent.Bio);
 
 		return user;
 	}
