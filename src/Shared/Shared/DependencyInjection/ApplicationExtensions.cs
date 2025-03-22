@@ -5,7 +5,7 @@ using System.Reflection;
 namespace Shared.DependencyInjection;
 public static class ApplicationExtensions
 {
-	public static IServiceCollection AddApplicationServices(this IServiceCollection services, Assembly assembly)
+	public static IServiceCollection AddMediatRWithBehaviors(this IServiceCollection services, Assembly assembly)
 	{
 		services.AddMediatR(config =>
 		{

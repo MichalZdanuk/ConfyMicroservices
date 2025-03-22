@@ -1,5 +1,4 @@
-﻿
-using Authentication.API.Services;
+﻿using Authentication.API.Services;
 using MassTransit;
 using Shared.Enums;
 using Shared.Messaging.Events;
