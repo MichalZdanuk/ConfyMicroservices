@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Context;
 using Shared.DependencyInjection;
-using Shared.Messaging.MassTransit;
 using System.Reflection;
 
 namespace Notification.Application;
@@ -15,8 +14,6 @@ public static class Extensions
 		var notificationApplicationAssembly = Assembly.GetExecutingAssembly();
 
 		services.AddMediatRWithBehaviors(notificationApplicationAssembly);
-
-		services.AddMessageBroker(configuration, notificationApplicationAssembly);
 
 		services.AddConfyHttpContext();
 

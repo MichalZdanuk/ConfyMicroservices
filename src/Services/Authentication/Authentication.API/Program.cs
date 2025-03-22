@@ -6,8 +6,6 @@ builder.Services
 	.AddApplicationServices()
 	.AddInfrastructure(builder.Configuration);
 
-builder.Services.AddMessageBroker(builder.Configuration);
-
 builder.Services.AddControllers();
 
 var app = builder.Build();

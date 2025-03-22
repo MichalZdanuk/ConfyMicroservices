@@ -2,7 +2,6 @@
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Context;
 using Shared.DependencyInjection;
-using Shared.Messaging.MassTransit;
 using System.Reflection;
 
 namespace ConferenceManagement.Application;
@@ -14,8 +13,6 @@ public static class DependencyInjection
 		var conferenceManagementApplicationAssembly = Assembly.GetExecutingAssembly();
 
 		services.AddMediatRWithBehaviors(conferenceManagementApplicationAssembly);
-
-		services.AddMessageBroker(configuration, conferenceManagementApplicationAssembly);
 
 		services.AddConfyHttpContext();
 

@@ -1,4 +1,6 @@
-﻿namespace Authentication.API.DAL;
+﻿using MassTransit;
+
+namespace Authentication.API.DAL;
 
 public class AuthenticationDbContext : DbContext
 {
@@ -12,6 +14,10 @@ public class AuthenticationDbContext : DbContext
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		modelBuilder.HasDefaultSchema(AuthenticationService.DbSchema);
+
+		modelBuilder.AddInboxStateEntity();
+		modelBuilder.AddOutboxMessageEntity();
+		modelBuilder.AddOutboxStateEntity();
 
 		base.OnModelCreating(modelBuilder);
 	}

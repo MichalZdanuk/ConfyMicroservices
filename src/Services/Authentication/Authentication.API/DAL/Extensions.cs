@@ -21,6 +21,8 @@ public static class Extensions
 
 		services.AddScoped<IUnitOfWork, AuthenticationUnitOfWork>();
 
+		services.AddMessageBroker<AuthenticationDbContext>(configuration);
+
 		return services;
 	}
 }

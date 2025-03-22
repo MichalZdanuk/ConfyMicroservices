@@ -1,8 +1,10 @@
-﻿using ConferenceManagement.Infrastructure.Repositories;
+﻿using ConferenceManagement.Application.EventHandlers.Integration;
+using ConferenceManagement.Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Shared.Interceptors;
+using Shared.Messaging.MassTransit;
 using Shared.UnitOfWork;
 
 namespace ConferenceManagement.Infrastructure;
@@ -23,6 +25,9 @@ public static class DependencyInjection
 		});
 
 		services.AddScoped<IUnitOfWork, ConferenceManagementUnitOfWork>();
+
+		var conferenceManagementApplicationAssembly = typeof(UserRegisteredEventHandler).Assembly;
+		services.AddMessageBroker<ConferenceManagementDbContext>(configuration, conferenceManagementApplicationAssembly);
 
 		return services;
 	}

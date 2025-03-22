@@ -1,5 +1,6 @@
 ﻿using ConferenceManagement.Domain.Data;
 using ConferenceManagement.Domain.Entities;
+using MassTransit;
 using Microsoft.EntityFrameworkCore;
 using System.Reflection;
 
@@ -22,6 +23,10 @@ public class ConferenceManagementDbContext
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		modelBuilder.HasDefaultSchema(ConferenceManagementMicroservice.DbSchema);
+
+		modelBuilder.AddInboxStateEntity();
+		modelBuilder.AddOutboxMessageEntity();
+		modelBuilder.AddOutboxStateEntity();
 
 		base.OnModelCreating(modelBuilder);
 	}
