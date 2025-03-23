@@ -1,7 +1,4 @@
-﻿using ConferenceManagement.Domain.Data;
-using ConferenceManagement.Domain.Entities;
-using MassTransit;
-using Microsoft.EntityFrameworkCore;
+﻿using MassTransit;
 using System.Reflection;
 
 namespace ConferenceManagement.Infrastructure.Data;

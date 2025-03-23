@@ -1,7 +1,4 @@
-﻿using ConferenceManagement.Domain.Entities;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Shared.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace ConferenceManagement.Infrastructure.Configurations;
 public class UserConfiguration : BaseEntityConfiguration<User>,
