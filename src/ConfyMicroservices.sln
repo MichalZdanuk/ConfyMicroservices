@@ -45,6 +45,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Application", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Notification.Infrastructure", "Services\Notification\Notification.Infrastructure\Notification.Infrastructure.csproj", "{8FA85C33-EF34-49EA-85F7-E851DA049104}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Registration", "Registration", "{5B4F4C94-866D-4770-9D45-D449EF56848D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Registration.API", "Services\Registration\Registration.API\Registration.API.csproj", "{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -107,6 +111,10 @@ Global
 		{8FA85C33-EF34-49EA-85F7-E851DA049104}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FA85C33-EF34-49EA-85F7-E851DA049104}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FA85C33-EF34-49EA-85F7-E851DA049104}.Release|Any CPU.Build.0 = Release|Any CPU
+		{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -128,5 +136,7 @@ Global
 		{83E6B9B7-B122-465C-9837-2F0138580C87} = {92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B}
 		{C2BD751F-F1D6-44D3-8180-8D8C1194B58F} = {92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B}
 		{8FA85C33-EF34-49EA-85F7-E851DA049104} = {92CD45D6-ECCC-4D1D-92EB-FEB17A805F5B}
+		{5B4F4C94-866D-4770-9D45-D449EF56848D} = {B23327F1-593B-42BD-B809-D097E5A019D5}
+		{909F8B54-F1F7-46F6-B418-1ABC15ADCEEB} = {5B4F4C94-866D-4770-9D45-D449EF56848D}
 	EndGlobalSection
 EndGlobal
