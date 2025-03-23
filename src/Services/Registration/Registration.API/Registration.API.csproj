@@ -16,6 +16,8 @@
 
   <ItemGroup>
     <ProjectReference Include="..\..\..\Shared\Shared\Shared.csproj" />
+    <ProjectReference Include="..\Registration.Application\Registration.Application.csproj" />
+    <ProjectReference Include="..\Registration.Infrastucture\Registration.Infrastucture.csproj" />
   </ItemGroup>
 
 </Project>

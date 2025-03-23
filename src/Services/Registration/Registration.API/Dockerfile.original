@@ -14,10 +14,6 @@ ARG BUILD_CONFIGURATION=Release
 WORKDIR /src
 COPY ["Services/Registration/Registration.API/Registration.API.csproj", "Services/Registration/Registration.API/"]
 COPY ["Shared/Shared/Shared.csproj", "Shared/Shared/"]
-COPY ["Services/Registration/Registration.Application/Registration.Application.csproj", "Services/Registration/Registration.Application/"]
-COPY ["Shared/Shared.Messaging/Shared.Messaging.csproj", "Shared/Shared.Messaging/"]
-COPY ["Services/Registration/Registration.Domain/Registration.Domain.csproj", "Services/Registration/Registration.Domain/"]
-COPY ["Services/Registration/Registration.Infrastucture/Registration.Infrastucture.csproj", "Services/Registration/Registration.Infrastucture/"]
 RUN dotnet restore "./Services/Registration/Registration.API/Registration.API.csproj"
 COPY . .
 WORKDIR "/src/Services/Registration/Registration.API"
