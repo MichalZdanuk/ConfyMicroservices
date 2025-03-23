@@ -14,7 +14,6 @@
 
   <ItemGroup>
     <Folder Include="EventHandlers\Domain\" />
-    <Folder Include="EventHandlers\Integration\" />
     <Folder Include="Registrations\" />
   </ItemGroup>
 

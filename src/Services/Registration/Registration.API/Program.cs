@@ -11,6 +11,11 @@ builder.Services.AddControllers();
 
 var app = builder.Build();
 
+if (app.Environment.IsDevelopment())
+{
+	await app.InitialiseDatabaseAsync();
+}
+
 // Configure the HTTP request pipeline.
 app.UseAuthentication();
 app.UseAuthorization();
