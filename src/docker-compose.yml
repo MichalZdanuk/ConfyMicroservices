@@ -26,3 +26,10 @@ services:
       context: .
       dockerfile: Services/ConferenceManagement/ConferenceManagement.API/Dockerfile
 
+
+  registration.api:
+    image: ${DOCKER_REGISTRY-}registrationapi
+    build:
+      context: .
+      dockerfile: Services/Registration/Registration.API/Dockerfile
+

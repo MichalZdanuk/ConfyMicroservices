@@ -90,3 +90,26 @@ services:
     volumes:
       - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
       - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
+
+  registration.api:
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - ASPNETCORE_HTTP_PORTS=8080
+      - ASPNETCORE_HTTPS_PORTS=8081
+      - ConnectionStrings__Database=Server=registrationdb;Database=RegistrationDb;User Id=sa;Password=HardPassword12345678abc!;Encrypt=False;TrustServerCertificate=True
+      - Jwt__Authority=http://authentication.api:8080
+      - Jwt__Audience=Microservices
+      - Jwt__Key=YourSuperVeryVeryLongSecretKeyHere
+      - MessageBroker__Host=amqp://confy-mq:5672
+      - MessageBroker__UserName=guest
+      - MessageBroker__Password=guest
+    depends_on:
+      - registrationdb
+      - messagebroker
+      - authentication.api
+    ports:
+      - "6002:8080"
+      - "6062:8081"
+    volumes:
+      - ${APPDATA}/Microsoft/UserSecrets:/home/app/.microsoft/usersecrets:ro
+      - ${APPDATA}/ASP.NET/Https:/home/app/.aspnet/https:ro
