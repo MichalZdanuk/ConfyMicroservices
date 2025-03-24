@@ -1,4 +1,5 @@
 ﻿using MassTransit;
+using Registration.Domain.Entities;
 using System.Reflection;
 
 namespace Registration.Infrastucture.Data;
@@ -9,6 +10,8 @@ public class RegistrationDbContext
 		: base(options)
 	{
 	}
+
+	public DbSet<User> Users { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{

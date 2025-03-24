@@ -2,6 +2,8 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Registration.Application.EventHandlers.Integration;
+using Registration.Domain.Repositories;
+using Registration.Infrastucture.Repositories;
 using Shared.Interceptors;
 using Shared.Messaging.MassTransit;
 using Shared.UnitOfWork;
@@ -25,14 +27,15 @@ public static class DependencyInjection
 
 		services.AddScoped<IUnitOfWork, RegistrationUnitOfWork>();
 
-		var conferenceManagementApplicationAssembly = typeof(UserRegisteredEventHandler).Assembly;
-		services.AddMessageBroker<RegistrationDbContext>(configuration, conferenceManagementApplicationAssembly);
+		var registrationApplicationAssembly = typeof(UserRegisteredEventHandler).Assembly;
+		services.AddMessageBroker<RegistrationDbContext>(configuration, RegistrationMicroservice.MicroserviceName, registrationApplicationAssembly);
 
 		return services;
 	}
 
 	private static IServiceCollection AddRepositories(this IServiceCollection services)
 	{
+		services.AddScoped<IUserRepository, UserRepository>();
 
 		return services;
 	}

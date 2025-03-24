@@ -27,7 +27,7 @@ public static class DependencyInjection
 		services.AddScoped<IUnitOfWork, ConferenceManagementUnitOfWork>();
 
 		var conferenceManagementApplicationAssembly = typeof(UserRegisteredEventHandler).Assembly;
-		services.AddMessageBroker<ConferenceManagementDbContext>(configuration, conferenceManagementApplicationAssembly);
+		services.AddMessageBroker<ConferenceManagementDbContext>(configuration, ConferenceManagementMicroservice.MicroserviceName, conferenceManagementApplicationAssembly);
 
 		return services;
 	}
