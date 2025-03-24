@@ -1,6 +1,4 @@
-﻿using Shared.Domain;
-
-namespace ConferenceManagement.Domain.Entities;
+﻿namespace ConferenceManagement.Domain.Entities;
 public class Prelegent : Entity
 {
 	private readonly List<LectureAssignment> _lectureAssignments = new();

@@ -1,6 +1,4 @@
-﻿using Shared.Domain;
-
-namespace Notification.Domain.Entities;
+﻿namespace Notification.Domain.Entities;
 public class User : Entity
 {
 	public string Email { get; set; } = default!;

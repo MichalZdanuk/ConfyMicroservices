@@ -1,8 +1,4 @@
-﻿using ConferenceManagement.Domain.ValueObjects;
-using Shared.Domain;
-using Shared.Enums;
-
-namespace ConferenceManagement.Domain.Entities;
+﻿namespace ConferenceManagement.Domain.Entities;
 public class User : Entity
 {
 	public FullName FullName { get; private set; } = default!;

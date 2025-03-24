@@ -1,6 +1,4 @@
-﻿using Shared.Domain;
-
-namespace Registration.Domain.Entities;
+﻿namespace Registration.Domain.Entities;
 public class User : Entity
 {
 	public string Email { get; set; } = default!;

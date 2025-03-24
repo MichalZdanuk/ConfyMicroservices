@@ -1,7 +1,4 @@
-﻿using ConferenceManagement.Domain.ValueObjects;
-using Shared.Domain;
-
-namespace ConferenceManagement.Domain.Entities;
+﻿namespace ConferenceManagement.Domain.Entities;
 public class Lecture : Aggregate
 {
 	private readonly List<LectureAssignment> _lectureAssignments = new();

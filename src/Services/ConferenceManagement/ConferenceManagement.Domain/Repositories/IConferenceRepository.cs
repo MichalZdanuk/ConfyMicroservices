@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Domain.Entities;
-
-namespace ConferenceManagement.Domain.Repositories;
+﻿namespace ConferenceManagement.Domain.Repositories;
 public interface IConferenceRepository
 {
 	Task<Conference?> GetByIdAsync(Guid id);

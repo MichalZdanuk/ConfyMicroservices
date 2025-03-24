@@ -1,6 +1,4 @@
-﻿using Shared.Domain;
-
-namespace ConferenceManagement.Domain.Entities;
+﻿namespace ConferenceManagement.Domain.Entities;
 public class LectureAssignment : Entity
 {
 	public Guid LectureId { get; private set; }

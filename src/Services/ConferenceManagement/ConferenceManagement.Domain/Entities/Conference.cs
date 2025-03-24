@@ -1,8 +1,4 @@
-﻿using ConferenceManagement.Domain.Events;
-using ConferenceManagement.Domain.ValueObjects;
-using Shared.Domain;
-
-namespace ConferenceManagement.Domain.Entities;
+﻿namespace ConferenceManagement.Domain.Entities;
 public class Conference : Aggregate
 {
 	private readonly List<Guid> _lectureIds = new();
