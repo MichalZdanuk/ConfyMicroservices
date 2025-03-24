@@ -5,7 +5,8 @@
       "commandVersion": "1.0",
       "serviceActions": {
         "authentication.api": "StartDebugging",
-        "conferencemanagement.api": "StartDebugging"
+        "conferencemanagement.api": "StartDebugging",
+        "notification.api": "StartDebugging"
       }
     }
   }

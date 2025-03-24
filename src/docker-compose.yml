@@ -33,3 +33,10 @@ services:
       context: .
       dockerfile: Services/Registration/Registration.API/Dockerfile
 
+
+  notification.api:
+    image: ${DOCKER_REGISTRY-}notificationapi
+    build:
+      context: .
+      dockerfile: Services/Notification/Notification.API/Dockerfile
+
