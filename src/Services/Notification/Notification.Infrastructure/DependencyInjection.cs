@@ -2,9 +2,9 @@
 using Microsoft.EntityFrameworkCore.Diagnostics;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using Notification.Application.Data;
 using Notification.Infrastructure.Data;
 using Shared.Interceptors;
+using Shared.UnitOfWork;
 
 namespace Notification.Infrastructure;
 public static class DependencyInjection
@@ -23,7 +23,7 @@ public static class DependencyInjection
 			options.UseSqlServer(connectionString);
 		});
 
-		services.AddScoped<IApplicationDbContext>(provider => provider.GetRequiredService<NotificationDbContext>());
+		services.AddScoped<IUnitOfWork, NotificationUnitOfWork>();
 
 		return services;
 	}

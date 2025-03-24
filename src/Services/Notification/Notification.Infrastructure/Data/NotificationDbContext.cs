@@ -1,25 +1,27 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Notification.Application.Data;
+﻿using MassTransit;
+using Microsoft.EntityFrameworkCore;
+using Notification.Domain.Entities;
 using System.Reflection;
 
 namespace Notification.Infrastructure.Data;
 public class NotificationDbContext
-	: DbContext, IApplicationDbContext
+	: DbContext
 {
 	public NotificationDbContext(DbContextOptions<NotificationDbContext> options)
 		: base(options)
 	{
 	}
 
-	public async Task<int> SaveChangesAsync()
-	{
-		return await base.SaveChangesAsync();
-	}
+	public DbSet<User> Users { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
 		modelBuilder.HasDefaultSchema(NotificationMicroservice.DbSchema);
+
+		modelBuilder.AddInboxStateEntity();
+		modelBuilder.AddOutboxMessageEntity();
+		modelBuilder.AddOutboxStateEntity();
 
 		base.OnModelCreating(modelBuilder);
 	}
