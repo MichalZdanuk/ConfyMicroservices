@@ -1,5 +1,4 @@
-﻿using ConferenceManagement.Domain.Events;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace ConferenceManagement.Application.EventHandlers.Domain;
 public class ConferenceCreatedEventHandler(ILogger<ConferenceCreatedEventHandler> logger)

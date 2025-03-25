@@ -1,7 +1,4 @@
 ﻿using ConferenceManagement.Application.Lectures.UpdateLecture;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ConferenceManagement.API.Controllers;
 

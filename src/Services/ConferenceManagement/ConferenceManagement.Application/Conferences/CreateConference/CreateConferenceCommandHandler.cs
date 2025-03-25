@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Domain.ValueObjects;
-
-namespace ConferenceManagement.Application.Conference.CreateConference;
+﻿namespace ConferenceManagement.Application.Conference.CreateConference;
 public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<CreateConferenceCommand>
 {

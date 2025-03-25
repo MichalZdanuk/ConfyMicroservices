@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-
-namespace ConferenceManagement.Infrastructure.Configurations;
+﻿namespace ConferenceManagement.Infrastructure.Configurations;
 public class ConferenceConfiguration
 	: BaseEntityConfiguration<Conference>,
 	IEntityTypeConfiguration<Conference>

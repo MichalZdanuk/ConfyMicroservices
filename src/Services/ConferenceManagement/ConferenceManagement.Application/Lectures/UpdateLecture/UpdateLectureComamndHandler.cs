@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Domain.ValueObjects;
-
-namespace ConferenceManagement.Application.Lectures.UpdateLecture;
+﻿namespace ConferenceManagement.Application.Lectures.UpdateLecture;
 public class UpdateLectureComamndHandler(ILectureRepository lectureRepository)
 	: IRequestHandler<UpdateLectureCommand>
 {

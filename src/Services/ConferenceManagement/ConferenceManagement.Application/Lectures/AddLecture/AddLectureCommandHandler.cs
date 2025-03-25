@@ -1,7 +1,4 @@
-﻿using ConferenceManagement.Domain.Entities;
-using ConferenceManagement.Domain.ValueObjects;
-
-namespace ConferenceManagement.Application.Lectures.AddLecture;
+﻿namespace ConferenceManagement.Application.Lectures.AddLecture;
 public class AddLectureCommandHandler(IConferenceRepository conferenceRepository,
 	IPrelegentRepository prelegentRepository,
 	ILectureRepository lectureRepository)

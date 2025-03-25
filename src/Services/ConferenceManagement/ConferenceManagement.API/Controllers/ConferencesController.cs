@@ -3,10 +3,6 @@ using ConferenceManagement.Application.Conference.CreateConference;
 using ConferenceManagement.Application.Conference.GetConference;
 using ConferenceManagement.Application.Conference.UpdateConfrerence;
 using ConferenceManagement.Application.Lectures.AddLecture;
-using MediatR;
-using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using Shared.Pagination;
 
 namespace ConferenceManagement.API.Controllers;
 

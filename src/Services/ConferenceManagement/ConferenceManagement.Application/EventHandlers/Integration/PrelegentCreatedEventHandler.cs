@@ -1,8 +1,4 @@
-﻿using ConferenceManagement.Domain.Entities;
-using MassTransit;
-using Microsoft.Extensions.Logging;
-using Shared.Messaging.Consumers;
-using Shared.Messaging.Events;
+﻿using Microsoft.Extensions.Logging;
 using Shared.UnitOfWork;
 
 namespace ConferenceManagement.Application.EventHandlers.Integration;
