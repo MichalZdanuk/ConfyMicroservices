@@ -11,11 +11,6 @@ public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepos
 				c.Id,
 				c.Name,
 				c.Language,
-				new ConferenceLinksDto(
-					c.ConferenceLinks.WebsiteUrl,
-					c.ConferenceLinks.FacebookUrl,
-					c.ConferenceLinks.InstagramUrl
-				),
 				new ConferenceDetailsDto(
 					c.ConferenceDetails.StartDate,
 					c.ConferenceDetails.EndDate,

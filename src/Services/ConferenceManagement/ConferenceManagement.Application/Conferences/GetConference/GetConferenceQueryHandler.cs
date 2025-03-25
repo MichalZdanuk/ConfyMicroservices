@@ -47,7 +47,7 @@ public class GetConferenceQueryHandler(IConferenceRepository conferenceRepositor
 		)).ToList();
 	}
 
-	private GetConferenceDto MapConferenceToDto(Domain.Entities.Conference conference, List<LectureDto> lectureDtos)
+	private GetConferenceDto MapConferenceToDto(Conference conference, List<LectureDto> lectureDtos)
 	{
 		return new GetConferenceDto(
 			conference.Name,

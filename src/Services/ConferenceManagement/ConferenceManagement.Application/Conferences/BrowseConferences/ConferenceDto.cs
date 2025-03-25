@@ -1,2 +1,2 @@
 ﻿namespace ConferenceManagement.Application.Conferences.BrowseConferences;
-public record ConferenceDto(Guid Id, string Name, string Language, ConferenceLinksDto ConferenceLinks, ConferenceDetailsDto ConferenceDetails, AddressDto Address);
+public record ConferenceDto(Guid Id, string Name, string Language, ConferenceDetailsDto ConferenceDetails, AddressDto Address);
