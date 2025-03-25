@@ -2,7 +2,7 @@
 public class UserRepository(NotificationDbContext dbContext)
 	: IUserRepository
 {
-	public async Task AddUserAsync(User user)
+	public async Task AddAsync(User user)
 	{
 		await dbContext.Users.AddAsync(user);
 	}
