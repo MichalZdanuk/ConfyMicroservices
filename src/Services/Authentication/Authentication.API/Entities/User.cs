@@ -12,7 +12,8 @@ public class User : Entity
 	public string? Bio { get; private set; }
 	public UserRole UserRole { get; private set; }
 
-	public static User Create(string email,
+	public static User Create(Guid id,
+		string email,
 		string passwordHash,
 		FullName fullName,
 		UserRole userRole,
@@ -20,7 +21,7 @@ public class User : Entity
 	{
 		return new User()
 		{
-			Id = Guid.NewGuid(),
+			Id = id,
 			Email = email,
 			PasswordHash = passwordHash,
 			FullName = fullName,

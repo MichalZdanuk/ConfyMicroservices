@@ -69,6 +69,8 @@ public class ConferencesController(IMediator mediator)
 
 		await mediator.Send(command);
 
-		return Created();
+		var uri = $"/lectures/{command.Id}";
+
+		return Created(uri, new { Id = command.Id });
 	}
 }

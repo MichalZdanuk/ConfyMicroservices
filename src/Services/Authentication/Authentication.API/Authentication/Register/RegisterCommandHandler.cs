@@ -10,7 +10,8 @@ public class RegisterCommandHandler(ICustomAuthService customAuthService,
 {
 	public async Task Handle(RegisterCommand command, CancellationToken cancellationToken)
 	{
-		var user = await customAuthService.Register(command.FirstName,
+		var user = await customAuthService.Register(command.Id,
+			command.FirstName,
 			command.LastName,
 			command.Email,
 			command.Password,

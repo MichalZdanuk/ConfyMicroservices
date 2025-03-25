@@ -10,7 +10,6 @@ namespace Authentication.API.Controllers
     public class AuthController(IMediator mediator)
         : ControllerBase
     {
-
         [HttpGet]
         public async Task<IActionResult> Get()
         {
@@ -24,7 +23,9 @@ namespace Authentication.API.Controllers
 
             await mediator.Send(command);
 
-            return Ok();
+            var uri = $"/users/{command.Id}";
+
+            return Created(uri, new { Id = command.Id });
         }
 
 		[HttpPost("login")]
@@ -44,7 +45,9 @@ namespace Authentication.API.Controllers
 
             await mediator.Send(command);
 
-            return Created();
-        }
+			var uri = $"/users/{command.Id}";
+
+			return Created(uri, new { Id = command.Id });
+		}
 	}
 }

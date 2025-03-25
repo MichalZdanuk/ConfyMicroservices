@@ -12,7 +12,8 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 	IConfiguration configuration)
 	: ICustomAuthService
 {
-	public async Task<User> Register(string FirstName,
+	public async Task<User> Register(Guid Id,
+		string FirstName,
 		string LastName,
 		string Email,
 		string Password,
@@ -24,7 +25,8 @@ public class CustomAuthService(AuthenticationDbContext dbContext,
 			throw new EmailAlreadyTakenException(Email);
 		}
 
-		var user = User.Create(Email,
+		var user = User.Create(Id,
+			Email,
 			BCrypt.Net.BCrypt.HashPassword(Password),
 			FullName.Of(FirstName, LastName),
 			UserRole,
