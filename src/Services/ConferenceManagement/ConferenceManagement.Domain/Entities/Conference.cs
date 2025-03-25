@@ -26,7 +26,7 @@ public class Conference : Aggregate
 			Address = address
 		};
 
-		conference.AddDomainEvent(new ConferenceCreatedEvent(conference.Id,
+		conference.AddDomainEvent(new CreatedConferenceEvent(conference.Id,
 			conference.ConferenceDetails.StartDate,
 			conference.ConferenceDetails.EndDate,
 			conference.Name));

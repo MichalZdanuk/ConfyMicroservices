@@ -12,6 +12,7 @@ public class RegistrationDbContext
 	}
 
 	public DbSet<User> Users { get; set; }
+	public DbSet<Conference> Conferences { get; set; }
 
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
