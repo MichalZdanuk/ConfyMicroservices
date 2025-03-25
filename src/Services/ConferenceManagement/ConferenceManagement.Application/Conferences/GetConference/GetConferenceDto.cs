@@ -1,7 +1,6 @@
-﻿using ConferenceManagement.Application.Conference.BrowseConferences;
-using ConferenceManagement.Application.Conferences.BrowseConferences;
+﻿using ConferenceManagement.Application.Conferences.BrowseConferences;
 
-namespace ConferenceManagement.Application.Conference.GetConference;
+namespace ConferenceManagement.Application.Conferences.GetConference;
 public record GetConferenceDto(string name,
 	string language,
 	ConferenceLinksDto ConferenceLinks,

@@ -1,4 +1,4 @@
-﻿namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
+﻿namespace ConferenceManagement.Application.Conferences.UpdateConfrerence;
 public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<UpdateConferenceCommand>
 {

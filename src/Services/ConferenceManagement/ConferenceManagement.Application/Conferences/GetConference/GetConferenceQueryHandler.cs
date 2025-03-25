@@ -1,7 +1,6 @@
-﻿using ConferenceManagement.Application.Conference.BrowseConferences;
-using ConferenceManagement.Application.Conferences.GetConference;
+﻿using ConferenceManagement.Application.Conferences.BrowseConferences;
 
-namespace ConferenceManagement.Application.Conference.GetConference;
+namespace ConferenceManagement.Application.Conferences.GetConference;
 public class GetConferenceQueryHandler(IConferenceRepository conferenceRepository,
 	ILectureRepository lectureRepository,
 	IPrelegentRepository prelegentRepository)
@@ -48,12 +47,12 @@ public class GetConferenceQueryHandler(IConferenceRepository conferenceRepositor
 		)).ToList();
 	}
 
-	private GetConferenceDto MapConferenceToDto(ConferenceManagement.Domain.Entities.Conference conference, List<LectureDto> lectureDtos)
+	private GetConferenceDto MapConferenceToDto(Domain.Entities.Conference conference, List<LectureDto> lectureDtos)
 	{
 		return new GetConferenceDto(
 			conference.Name,
 			conference.Language,
-			new Conferences.BrowseConferences.ConferenceLinksDto(
+			new ConferenceLinksDto(
 				conference.ConferenceLinks.WebsiteUrl,
 				conference.ConferenceLinks.FacebookUrl,
 				conference.ConferenceLinks.InstagramUrl

@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Application.Conferences.UpdateConfrerence;
-
-namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
+﻿namespace ConferenceManagement.Application.Conferences.UpdateConfrerence;
 public record UpdateConferenceCommand(Guid ConferenceId,
 	string Name,
 	string Language,

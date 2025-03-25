@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Application.Conferences.CreateConference;
-
-namespace ConferenceManagement.Application.Conference.CreateConference;
+﻿namespace ConferenceManagement.Application.Conferences.CreateConference;
 public record CreateConferenceCommand(string Name,
 	string Language,
 	CreateConferenceLinksDto ConferenceLinks,

@@ -1,4 +1,2 @@
-﻿using ConferenceManagement.Application.Conferences.GetConference;
-
-namespace ConferenceManagement.Application.Conference.GetConference;
+﻿namespace ConferenceManagement.Application.Conferences.GetConference;
 public record LectureDto(Guid Id, LectureDetailsDto LectureDetails, IList<PrelegentDto> Prelegents);

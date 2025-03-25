@@ -1,2 +1,2 @@
-﻿namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
+﻿namespace ConferenceManagement.Application.Conferences.UpdateConfrerence;
 public record UpdateConferenceDetailsDto(DateTime StartDate, DateTime EndDate, string Description, bool IsOnline);

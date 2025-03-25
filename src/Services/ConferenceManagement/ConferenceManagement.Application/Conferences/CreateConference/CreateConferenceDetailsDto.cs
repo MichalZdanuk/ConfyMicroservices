@@ -1,2 +1,2 @@
-﻿namespace ConferenceManagement.Application.Conference.CreateConference;
+﻿namespace ConferenceManagement.Application.Conferences.CreateConference;
 public record CreateConferenceDetailsDto(DateTime StartDate, DateTime EndDate, string Description, bool IsOnline);

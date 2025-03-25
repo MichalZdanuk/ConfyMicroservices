@@ -1,7 +1,7 @@
-﻿using ConferenceManagement.Application.Conference.BrowseConferences;
-using ConferenceManagement.Application.Conference.CreateConference;
-using ConferenceManagement.Application.Conference.GetConference;
-using ConferenceManagement.Application.Conference.UpdateConfrerence;
+﻿using ConferenceManagement.Application.Conferences.BrowseConferences;
+using ConferenceManagement.Application.Conferences.CreateConference;
+using ConferenceManagement.Application.Conferences.GetConference;
+using ConferenceManagement.Application.Conferences.UpdateConfrerence;
 using ConferenceManagement.Application.Lectures.AddLecture;
 
 namespace ConferenceManagement.API.Controllers;

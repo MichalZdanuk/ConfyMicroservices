@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Application.Conferences.BrowseConferences;
-
-namespace ConferenceManagement.Application.Conference.BrowseConferences;
+﻿namespace ConferenceManagement.Application.Conferences.BrowseConferences;
 public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<BrowseConferencesQuery, PaginationResult<ConferenceDto>>
 {

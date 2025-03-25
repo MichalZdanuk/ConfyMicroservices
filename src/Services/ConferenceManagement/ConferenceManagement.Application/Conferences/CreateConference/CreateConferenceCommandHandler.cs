@@ -1,4 +1,4 @@
-﻿namespace ConferenceManagement.Application.Conference.CreateConference;
+﻿namespace ConferenceManagement.Application.Conferences.CreateConference;
 public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<CreateConferenceCommand>
 {
@@ -9,7 +9,7 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 		await conferenceRepository.AddAsync(conference);
 	}
 
-	private ConferenceManagement.Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)
+	private Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)
 	{
 		var conferenceLinks = ConferenceLinks.Of(command.ConferenceLinks.WebsiteUrl,
 			command.ConferenceLinks.FacebookUrl,
@@ -25,7 +25,7 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 			command.Address.AddressLine,
 			command.Address.ZipCode);
 
-		var conference = ConferenceManagement.Domain.Entities.Conference.Create(command.Id,
+		var conference = Domain.Entities.Conference.Create(command.Id,
 			command.Name,
 			command.Language,
 			conferenceLinks,
