@@ -1,4 +1,5 @@
 ﻿using ConferenceManagement.Application.Lectures.UpdateLecture;
+using ConferenceManagement.Application.Lectures.UpdateLecturePrelegents;
 
 namespace ConferenceManagement.API.Controllers;
 
@@ -17,6 +18,17 @@ public class LecturesController(IMediator mediator)
 			dto.EndDate);
 
 		await mediator.Send(command);
+
+		return Accepted();
+	}
+
+	[HttpPut("{id}/prelegents")]
+	public async Task<ActionResult> UpdateLecturePrelegents(Guid id, [FromBody]UpdateLecturePrelegentsDto dto)
+	{
+		var command = new UpdateLecturePrelegentsCommand(id, dto.PrelegentIds);
+
+		await mediator.Send(command);
+
 
 		return Accepted();
 	}

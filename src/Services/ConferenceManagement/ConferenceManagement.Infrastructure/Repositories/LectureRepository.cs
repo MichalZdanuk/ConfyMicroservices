@@ -12,11 +12,18 @@ public class LectureRepository(ConferenceManagementDbContext context)
 		return await context.Lectures.SingleOrDefaultAsync(l => l.Id == id);
 	}
 
-	public Task<List<Lecture>> GetLecturesWithAssignmentsByConferenceIdAsync(Guid conferenceId)
+	public async Task<List<Lecture>> GetLecturesWithAssignmentsByConferenceIdAsync(Guid conferenceId)
 	{
-		return context.Lectures
+		return await context.Lectures
 			.Include(l => l.LectureAssignments)
 			.Where(l => l.ConferenceId == conferenceId).ToListAsync();
+	}
+
+	public async Task<Lecture?> GetWithAssignmentsByIdAsync(Guid id)
+	{
+		return await context.Lectures
+			.Include(l => l.LectureAssignments)
+			.SingleOrDefaultAsync(l => l.Id == id);
 	}
 
 	public async Task UpdateAsync(Lecture lecture)

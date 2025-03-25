@@ -26,6 +26,19 @@ public class Lecture : Aggregate
 		LectureDetails = details;
 	}
 
+	public void UpdatePrelegents(IList<Guid> prelegentIds)
+	{
+		_lectureAssignments.RemoveAll(x => !prelegentIds.Contains(x.PrelegentId));
+
+		foreach (var prelegentId in prelegentIds)
+		{
+			if (!_lectureAssignments.Any(x => x.PrelegentId == prelegentId))
+			{
+				_lectureAssignments.Add(LectureAssignment.Create(Id, prelegentId));
+			}
+		}
+	}
+
 	public void AddPrelegent(Guid prelegentId)
 	{
 		if (!_lectureAssignments.Any(x => x.PrelegentId == prelegentId))
