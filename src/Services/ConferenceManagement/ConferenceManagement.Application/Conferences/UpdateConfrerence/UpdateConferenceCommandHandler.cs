@@ -15,8 +15,8 @@ public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
 			command.ConferenceLinks.FacebookUrl,
 			command.ConferenceLinks.InstagramUrl);
 
-		var updatedConferenceDetails = ConferenceDetails.Of(command.ConferenceDetails.StartDate,
-			command.ConferenceDetails.EndDate,
+		var updatedConferenceDetails = ConferenceDetails.Of(conference.ConferenceDetails.StartDate,
+			conference.ConferenceDetails.EndDate,
 			command.ConferenceDetails.Description,
 			command.ConferenceDetails.IsOnline);
 
