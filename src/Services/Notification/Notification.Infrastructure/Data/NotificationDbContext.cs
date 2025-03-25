@@ -1,6 +1,4 @@
 ﻿using MassTransit;
-using Microsoft.EntityFrameworkCore;
-using Notification.Domain.Entities;
 using System.Reflection;
 
 namespace Notification.Infrastructure.Data;

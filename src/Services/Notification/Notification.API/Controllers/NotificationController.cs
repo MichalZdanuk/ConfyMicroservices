@@ -1,7 +1,4 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-
-namespace Notification.API.Controllers;
+﻿namespace Notification.API.Controllers;
 
 [Authorize]
 [Route("notifications")]
