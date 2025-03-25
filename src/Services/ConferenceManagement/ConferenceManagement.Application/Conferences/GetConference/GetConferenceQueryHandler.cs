@@ -30,7 +30,7 @@ public class GetConferenceQueryHandler(IConferenceRepository conferenceRepositor
 			.Distinct()
 			.ToList();
 
-		var prelegents = await prelegentRepository.BrowsePrelegentsAsync(prelegentIds);
+		var prelegents = await prelegentRepository.BrowseAsync(prelegentIds);
 		return prelegents.ToDictionary(p => p.Id, p => new PrelegentDto(p.Name, p.Bio));
 	}
 

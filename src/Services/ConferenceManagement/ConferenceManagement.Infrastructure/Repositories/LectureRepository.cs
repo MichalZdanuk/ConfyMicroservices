@@ -7,7 +7,7 @@ public class LectureRepository(ConferenceManagementDbContext context)
 		await context.AddAsync(lecture);
 	}
 
-	public async Task<Lecture?> GetAsync(Guid id)
+	public async Task<Lecture?> GetByIdAsync(Guid id)
 	{
 		return await context.Lectures.SingleOrDefaultAsync(l => l.Id == id);
 	}

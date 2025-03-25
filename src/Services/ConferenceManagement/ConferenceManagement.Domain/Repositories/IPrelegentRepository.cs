@@ -1,7 +1,7 @@
 ﻿namespace ConferenceManagement.Domain.Repositories;
 public interface IPrelegentRepository
 {
-	public Task AddPrelegentAsync(Prelegent prelegent);
-	public Task<bool> AllPrelegentsExist(IList<Guid> prelegentIds);
-	public Task<IReadOnlyList<Prelegent>> BrowsePrelegentsAsync(IList<Guid> prelegentIds);
+	public Task AddAsync(Prelegent prelegent);
+	public Task<bool> AllPrelegentsExistAsync(IList<Guid> prelegentIds);
+	public Task<IReadOnlyList<Prelegent>> BrowseAsync(IList<Guid> prelegentIds);
 }

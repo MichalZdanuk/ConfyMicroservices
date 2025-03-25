@@ -21,7 +21,7 @@ public class UserRegisteredEventHandler
 	{
 		var user = PrepareUserFromEvent(context.Message);
 
-		await _userRepository.AddUserAsync(user);
+		await _userRepository.AddAsync(user);
 	}
 
 	private User PrepareUserFromEvent(UserRegisteredEvent userRegisteredEvent)

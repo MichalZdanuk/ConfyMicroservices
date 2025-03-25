@@ -22,7 +22,7 @@ public class PrelegentCreatedEventHandler
 	{
 		var prelegent = PreparePrelegentFromEvent(context.Message);
 
-		await _prelegentRepository.AddPrelegentAsync(prelegent);
+		await _prelegentRepository.AddAsync(prelegent);
 	}
 
 	private Prelegent PreparePrelegentFromEvent(PrelegentCreatedEvent prelegentCreatedEvent)

@@ -25,7 +25,7 @@ public class AddLectureCommandHandler(IConferenceRepository conferenceRepository
 
 	private async Task ValidatePrelegents(IList<Guid> prelegentIds)
 	{
-		var exists = await prelegentRepository.AllPrelegentsExist(prelegentIds);
+		var exists = await prelegentRepository.AllPrelegentsExistAsync(prelegentIds);
 
 		if (!exists)
 		{

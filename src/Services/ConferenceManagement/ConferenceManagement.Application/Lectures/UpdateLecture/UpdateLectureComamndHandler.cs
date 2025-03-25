@@ -4,7 +4,7 @@ public class UpdateLectureComamndHandler(ILectureRepository lectureRepository)
 {
 	public async Task Handle(UpdateLectureCommand command, CancellationToken cancellationToken)
 	{
-		var lecture = await lectureRepository.GetAsync(command.LectureId);
+		var lecture = await lectureRepository.GetByIdAsync(command.LectureId);
 
 		if (lecture is null)
 		{
