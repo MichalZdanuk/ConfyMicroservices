@@ -2,6 +2,7 @@
 using ConferenceManagement.Application.Conference.CreateConference;
 using ConferenceManagement.Application.Conference.GetConference;
 using ConferenceManagement.Application.Conference.UpdateConfrerence;
+using ConferenceManagement.Application.Lectures.AddLecture;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -58,4 +59,13 @@ public class ConferencesController(IMediator mediator)
 		return Accepted();
 	}
 
+	[HttpPost("{id}/lectures")]
+	public async Task<ActionResult> AddLecture(Guid id, [FromBody]AddLectureDto dto)
+	{
+		var command = new AddLectureCommand(id, dto.Title, dto.StartDate, dto.EndDate, dto.PrelegentIds);
+
+		await mediator.Send(command);
+
+		return Created();
+	}
 }

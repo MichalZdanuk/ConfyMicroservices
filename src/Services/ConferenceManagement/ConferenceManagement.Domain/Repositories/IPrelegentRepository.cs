@@ -2,4 +2,5 @@
 public interface IPrelegentRepository
 {
 	public Task AddPrelegentAsync(Prelegent prelegent);
+	public Task<bool> AllPrelegentsExist(IList<Guid> prelegentIds);
 }
