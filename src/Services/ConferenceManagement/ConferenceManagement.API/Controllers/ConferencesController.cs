@@ -36,7 +36,10 @@ public class ConferencesController(IMediator mediator)
 	public async Task<ActionResult> CreateConference([FromBody]CreateConferenceDto dto)
 	{
 		var command = new CreateConferenceCommand(dto.Name,
-			dto.ConferenceDetailsDto, dto.AddressDto);
+			dto.Language,
+			dto.ConferenceLinksDto,
+			dto.ConferenceDetailsDto,
+			dto.AddressDto);
 
 		await mediator.Send(command);
 		var uri = $"/conferences/{command.Id}";
@@ -47,8 +50,12 @@ public class ConferencesController(IMediator mediator)
 	[HttpPut("{id}")]
 	public async Task<ActionResult> UpdateConference([FromRoute]Guid id, [FromBody]UpdateConferenceDto dto)
 	{
-		var command = new UpdateConferenceCommand(id, dto.Name,
-			dto.ConferenceDetailsDto, dto.AddressDto);
+		var command = new UpdateConferenceCommand(id,
+			dto.Name,
+			dto.Language,
+			dto.conferenceLinksDto,
+			dto.conferenceDetailsDto,
+			dto.AddressDto);
 
 		await mediator.Send(command);
 

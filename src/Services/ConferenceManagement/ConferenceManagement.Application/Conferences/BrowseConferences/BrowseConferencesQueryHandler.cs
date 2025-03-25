@@ -1,4 +1,6 @@
-﻿namespace ConferenceManagement.Application.Conference.BrowseConferences;
+﻿using ConferenceManagement.Application.Conferences.BrowseConferences;
+
+namespace ConferenceManagement.Application.Conference.BrowseConferences;
 public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<BrowseConferencesQuery, PaginationResult<ConferenceDto>>
 {
@@ -10,10 +12,17 @@ public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepos
 			.Select(c => new ConferenceDto(
 				c.Id,
 				c.Name,
+				c.Language,
+				new ConferenceLinksDto(
+					c.ConferenceLinks.WebsiteUrl,
+					c.ConferenceLinks.FacebookUrl,
+					c.ConferenceLinks.InstagramUrl
+				),
 				new ConferenceDetailsDto(
 					c.ConferenceDetails.StartDate,
 					c.ConferenceDetails.EndDate,
-					c.ConferenceDetails.Description
+					c.ConferenceDetails.Description,
+					c.ConferenceDetails.IsOnline
 				),
 				new AddressDto(
 					c.Address.City,

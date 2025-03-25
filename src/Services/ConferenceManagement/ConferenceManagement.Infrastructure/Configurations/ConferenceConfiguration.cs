@@ -12,11 +12,22 @@ public class ConferenceConfiguration
 		builder.Property(c => c.Name)
 			.IsRequired();
 
+		builder.Property(c => c.Language)
+			.IsRequired();
+
+		builder.ComplexProperty(c => c.ConferenceLinks, conferenceLinksBuilder =>
+		{
+			conferenceLinksBuilder.Property(c => c.WebsiteUrl).IsRequired(false);
+			conferenceLinksBuilder.Property(c => c.FacebookUrl).IsRequired(false);
+			conferenceLinksBuilder.Property(c => c.InstagramUrl).IsRequired(false);
+		});
+
 		builder.ComplexProperty(c => c.ConferenceDetails, conferenceDetailsBuilder =>
 		{
 			conferenceDetailsBuilder.Property(c => c.StartDate).IsRequired();
 			conferenceDetailsBuilder.Property(c => c.EndDate).IsRequired();
 			conferenceDetailsBuilder.Property(c => c.Description).IsRequired();
+			conferenceDetailsBuilder.Property(c => c.IsOnline).IsRequired();
 		});
 
 		builder.ComplexProperty(c => c.Address, addressBuilder =>

@@ -11,16 +11,26 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 
 	private ConferenceManagement.Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)
 	{
+		var conferenceLinks = ConferenceLinks.Of(command.ConferenceLinks.WebsiteUrl,
+			command.ConferenceLinks.FacebookUrl,
+			command.ConferenceLinks.InstagramUrl);
+
 		var conferenceDetails = ConferenceDetails.Of(command.ConferenceDetails.StartDate,
 			command.ConferenceDetails.EndDate,
-			command.ConferenceDetails.Description);
+			command.ConferenceDetails.Description,
+			command.ConferenceDetails.IsOnline);
 
 		var address = Address.Of(command.Address.City,
 			command.Address.Country,
 			command.Address.AddressLine,
 			command.Address.ZipCode);
 
-		var conference = ConferenceManagement.Domain.Entities.Conference.Create(command.Id, command.Name, conferenceDetails, address);
+		var conference = ConferenceManagement.Domain.Entities.Conference.Create(command.Id,
+			command.Name,
+			command.Language,
+			conferenceLinks,
+			conferenceDetails,
+			address);
 
 		return conference;
 	}

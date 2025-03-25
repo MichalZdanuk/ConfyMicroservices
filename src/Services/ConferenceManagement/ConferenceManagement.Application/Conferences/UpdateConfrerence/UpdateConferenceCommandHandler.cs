@@ -1,6 +1,4 @@
-﻿using ConferenceManagement.Domain.ValueObjects;
-
-namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
+﻿namespace ConferenceManagement.Application.Conference.UpdateConfrerence;
 public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<UpdateConferenceCommand>
 {
@@ -13,16 +11,21 @@ public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
 			throw new ConferenceNotFoundException(command.ConferenceId);
 		}
 
+		var updatedConferenceLinks = ConferenceLinks.Of(command.ConferenceLinks.WebsiteUrl,
+			command.ConferenceLinks.FacebookUrl,
+			command.ConferenceLinks.InstagramUrl);
+
 		var updatedConferenceDetails = ConferenceDetails.Of(command.ConferenceDetails.StartDate,
 			command.ConferenceDetails.EndDate,
-			command.ConferenceDetails.Description);
+			command.ConferenceDetails.Description,
+			command.ConferenceDetails.IsOnline);
 
 		var updatedAddress = Address.Of(command.Address.City,
 			command.Address.Country,
 			command.Address.AddressLine,
 			command.Address.ZipCode);
 
-		conference.Update(command.Name, updatedConferenceDetails, updatedAddress);
+		conference.Update(command.Name, command.Language, updatedConferenceLinks, updatedConferenceDetails, updatedAddress);
 
 		await conferenceRepository.UpdateAsync(conference);
 	}

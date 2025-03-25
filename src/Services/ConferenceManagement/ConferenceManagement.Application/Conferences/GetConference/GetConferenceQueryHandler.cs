@@ -1,6 +1,5 @@
 ﻿using ConferenceManagement.Application.Conference.BrowseConferences;
 using ConferenceManagement.Application.Conferences.GetConference;
-using ConferenceManagement.Domain.Entities;
 
 namespace ConferenceManagement.Application.Conference.GetConference;
 public class GetConferenceQueryHandler(IConferenceRepository conferenceRepository,
@@ -53,10 +52,17 @@ public class GetConferenceQueryHandler(IConferenceRepository conferenceRepositor
 	{
 		return new GetConferenceDto(
 			conference.Name,
+			conference.Language,
+			new Conferences.BrowseConferences.ConferenceLinksDto(
+				conference.ConferenceLinks.WebsiteUrl,
+				conference.ConferenceLinks.FacebookUrl,
+				conference.ConferenceLinks.InstagramUrl
+			),
 			new ConferenceDetailsDto(
 				conference.ConferenceDetails.StartDate,
 				conference.ConferenceDetails.EndDate,
-				conference.ConferenceDetails.Description
+				conference.ConferenceDetails.Description,
+				conference.ConferenceDetails.IsOnline
 			),
 			new AddressDto(
 				conference.Address.City,
