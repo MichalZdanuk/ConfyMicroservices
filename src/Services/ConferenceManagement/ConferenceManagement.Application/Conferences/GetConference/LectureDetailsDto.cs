@@ -1,2 +1,2 @@
-﻿namespace ConferenceManagement.Application.Conference.GetConference;
-public record LectureDetailsDto(Guid Id, string Title, DateTime StartDate, DateTime EndDate);
+﻿namespace ConferenceManagement.Application.Conferences.GetConference;
+public record LectureDetailsDto(string Title, DateTime StartDate, DateTime EndDate);

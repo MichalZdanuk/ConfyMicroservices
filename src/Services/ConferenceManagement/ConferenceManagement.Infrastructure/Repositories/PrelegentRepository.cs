@@ -16,4 +16,13 @@ public class PrelegentRepository(ConferenceManagementDbContext context)
 
 		return count == prelegentIds.Count;
 	}
+
+	public async Task<IReadOnlyList<Prelegent>> BrowsePrelegentsAsync(IList<Guid> prelegentIds)
+	{
+		var prelegents = await context.Prelegents
+			.Where(x => prelegentIds.Contains(x.Id))
+			.ToListAsync();
+
+		return prelegents.AsReadOnly();
+	}
 }
