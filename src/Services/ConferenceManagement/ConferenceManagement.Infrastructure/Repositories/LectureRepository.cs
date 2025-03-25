@@ -7,10 +7,20 @@ public class LectureRepository(ConferenceManagementDbContext context)
 		await context.AddAsync(lecture);
 	}
 
+	public async Task<Lecture?> GetAsync(Guid id)
+	{
+		return await context.Lectures.SingleOrDefaultAsync(l => l.Id == id);
+	}
+
 	public Task<List<Lecture>> GetLecturesWithAssignmentsByConferenceIdAsync(Guid conferenceId)
 	{
 		return context.Lectures
 			.Include(l => l.LectureAssignments)
 			.Where(l => l.ConferenceId == conferenceId).ToListAsync();
+	}
+
+	public async Task UpdateAsync(Lecture lecture)
+	{
+		context.Lectures.Update(lecture);
 	}
 }
