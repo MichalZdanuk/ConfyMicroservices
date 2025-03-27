@@ -1,5 +1,5 @@
 ﻿namespace ConferenceManagement.Application.Conferences.UpdateConfrerence;
-public class UpdateCommandHandler(IConferenceRepository conferenceRepository)
+public class UpdateConferenceCommandHandler(IConferenceRepository conferenceRepository)
 	: IRequestHandler<UpdateConferenceCommand>
 {
 	public async Task Handle(UpdateConferenceCommand command, CancellationToken cancellationToken)
