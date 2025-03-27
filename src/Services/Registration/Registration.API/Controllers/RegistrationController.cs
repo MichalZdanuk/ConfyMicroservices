@@ -9,9 +9,5 @@ namespace Registration.API.Controllers;
 public class RegistrationController
 	: ControllerBase
 {
-	[HttpGet("test")]
-	public async Task<ActionResult> Test()
-	{
-		return Ok("registration ok");
-	}
+
 }
