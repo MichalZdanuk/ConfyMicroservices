@@ -1,8 +1,4 @@
-﻿using Registration.Domain.Enums;
-using Registration.Domain.Events;
-using Registration.Domain.Exceptions;
-
-namespace Registration.Domain.Entities;
+﻿namespace Registration.Domain.Entities;
 public class Registration : Aggregate
 {
 	public Guid UserId { get; private set; }

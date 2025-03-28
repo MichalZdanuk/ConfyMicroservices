@@ -1,6 +1,4 @@
-﻿using Shared.Exceptions;
-
-namespace Registration.Domain.Exceptions;
+﻿namespace Registration.Domain.Exceptions;
 public class CannotCancelAfterStartOfConferenceException
 	: BadRequestException
 {
