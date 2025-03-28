@@ -5,4 +5,6 @@ public interface IRegistrationRepository
 	public Task UpdateAsync(Entities.Registration registration);
 	public Task<Entities.Registration?> GetByIdAsync(Guid id);
 	public Task<Entities.Registration?> GetByUserIdAndConferenceId(Guid userId, Guid conferenceId);
+	public Task<IList<Entities.Registration>> BrowseByUserIdAsync(Guid userId);
+	public Task<int> CountByUserIdAsync(Guid userId);
 }

@@ -27,4 +27,18 @@ public class RegistrationRepository(RegistrationDbContext context)
 			.Include(r => r.Conference)
 			.SingleOrDefaultAsync(r => r.Id == id);
 	}
+
+	public async Task<IList<Domain.Entities.Registration>> BrowseByUserIdAsync(Guid userId)
+	{
+		return await context.Registrations
+			.Include(r => r.Conference)
+			.Where(r => r.UserId == userId)
+			.OrderBy(r => r.Conference.StartDate)
+			.ToListAsync();
+	}
+
+	public async Task<int> CountByUserIdAsync(Guid userId)
+	{
+		return await context.Registrations.CountAsync(r => r.UserId == userId);
+	}
 }

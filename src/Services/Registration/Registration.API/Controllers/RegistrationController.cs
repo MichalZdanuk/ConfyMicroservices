@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Registration.Application.Registrations.AddRegistration;
+using Registration.Application.Registrations.BrowseMyRegistratinons;
 using Registration.Application.Registrations.CancelRegistration;
+using Shared.Pagination;
 
 namespace Registration.API.Controllers;
 
@@ -32,5 +34,15 @@ public class RegistrationController(IMediator mediator)
 		await mediator.Send(command);
 
 		return Accepted();
+	}
+
+	[HttpGet]
+	public async Task<ActionResult<PaginationResult<UserRegistrationDto>>> BrowseMyRegistrations([FromQuery] PaginationRequest request)
+	{
+		var query = new BrowseMyRegistrationsQuery(request);
+
+		var result = await mediator.Send(query);
+
+		return Ok(result);
 	}
 }
