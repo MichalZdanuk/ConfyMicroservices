@@ -4,10 +4,12 @@ using Shared.Context;
 namespace Registration.Application.Registrations.AddRegistration;
 public class AddRegistrationCommandHandler(IContext context,
 	IRegistrationService registrationService)
-	: IRequestHandler<AddRegistrationCommand>
+	: IRequestHandler<AddRegistrationCommand, Guid>
 {
-	public async Task Handle(AddRegistrationCommand command, CancellationToken cancellationToken)
+	public async Task<Guid> Handle(AddRegistrationCommand command, CancellationToken cancellationToken)
 	{
-		await registrationService.RegisterUserForConferenceAsync(context.UserId, command.ConferenceId);
+		var registrationId = await registrationService.RegisterUserForConferenceAsync(context.UserId, command.ConferenceId);
+
+		return registrationId;
 	}
 }

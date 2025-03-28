@@ -7,7 +7,7 @@ public class RegistrationService(IConferenceRepository conferenceRepository,
 	: IRegistrationService
 {
 
-	public async Task RegisterUserForConferenceAsync(Guid userId, Guid conferenceId)
+	public async Task<Guid> RegisterUserForConferenceAsync(Guid userId, Guid conferenceId)
 	{
 		var conference = await conferenceRepository.GetByIdAsync(conferenceId);
 
@@ -22,11 +22,15 @@ public class RegistrationService(IConferenceRepository conferenceRepository,
 		{
 			var newRegistration = Domain.Entities.Registration.Create(userId, conferenceId, conference);
 			await registrationRepository.AddAsync(newRegistration);
+
+			return newRegistration.Id;
 		}
 		else
 		{
 			registration.ReRegister();
 			await registrationRepository.UpdateAsync(registration);
+
+			return registration.Id;
 		}
 	}
 

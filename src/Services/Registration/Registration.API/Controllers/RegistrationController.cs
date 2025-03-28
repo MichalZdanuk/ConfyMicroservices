@@ -17,11 +17,11 @@ public class RegistrationController(IMediator mediator)
 	{
 		var command = new AddRegistrationCommand(dto.ConferenceId);
 
-		await mediator.Send(command);
+		var registrationId = await mediator.Send(command);
 
-		var uri = $"/registrations/{command.Id}";
+		var uri = $"/registrations/{registrationId}";
 
-		return Created(uri, new { Id = command.Id });
+		return Created(uri, new { Id = registrationId });
 	}
 
 	[HttpPut("{id}/cancel")]
