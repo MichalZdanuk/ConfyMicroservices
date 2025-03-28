@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Registration.Application.Services;
 using Shared.Context;
 using Shared.DependencyInjection;
 using System.Reflection;
@@ -15,6 +16,8 @@ public static class DependencyInjection
 		services.AddMediatRWithBehaviors(registrationApplicationAssembly);
 
 		services.AddConfyHttpContext();
+
+		services.AddScoped<IRegistrationService, RegistrationService>();
 
 		return services;
 	}

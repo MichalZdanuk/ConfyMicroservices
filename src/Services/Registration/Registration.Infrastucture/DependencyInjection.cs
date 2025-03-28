@@ -37,6 +37,7 @@ public static class DependencyInjection
 	{
 		services.AddScoped<IUserRepository, UserRepository>();
 		services.AddScoped<IConferenceRepository, ConferenceRepository>();
+		services.AddScoped<IRegistrationRepository, RegistrationRepository>();
 
 		return services;
 	}

@@ -9,4 +9,9 @@ public class ConferenceRepository(RegistrationDbContext context)
 	{
 		await context.AddAsync(conference);
 	}
+
+	public async Task<Conference?> GetByIdAsync(Guid id)
+	{
+		return await context.Conferences.SingleOrDefaultAsync(c => c.Id == id);
+	}
 }

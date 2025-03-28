@@ -23,6 +23,11 @@ public class Registration : Aggregate
 
 	public static Registration Create(Guid userId, Guid conferenceId, Conference conference)
 	{
+		if (conference.StartDate <= DateTime.UtcNow)
+		{
+			throw new CannotRegisterAfterStartOfConferenceException(conferenceId);
+		}
+
 		return new Registration(userId, conferenceId, conference);
 	}
 
