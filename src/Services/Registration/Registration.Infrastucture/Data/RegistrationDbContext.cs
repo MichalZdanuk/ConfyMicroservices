@@ -11,6 +11,7 @@ public class RegistrationDbContext
 	{
 	}
 
+	public DbSet<Domain.Entities.Registration> Registrations { get; set; }
 	public DbSet<User> Users { get; set; }
 	public DbSet<Conference> Conferences { get; set; }
 

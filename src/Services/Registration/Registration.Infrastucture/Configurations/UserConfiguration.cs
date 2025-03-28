@@ -14,5 +14,9 @@ public class UserConfiguration
 
 		builder.Property(u => u.Email)
 			.IsRequired();
+
+		builder.HasMany<Domain.Entities.Registration>()
+			.WithOne()
+			.HasForeignKey(r => r.UserId);
 	}
 }
