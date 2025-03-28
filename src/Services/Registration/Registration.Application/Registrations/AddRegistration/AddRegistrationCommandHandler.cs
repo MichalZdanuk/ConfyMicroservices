@@ -8,6 +8,6 @@ public class AddRegistrationCommandHandler(IContext context,
 {
 	public async Task Handle(AddRegistrationCommand command, CancellationToken cancellationToken)
 	{
-		await registrationService.RegisterUserForConference(context.UserId, command.ConferenceId);
+		await registrationService.RegisterUserForConferenceAsync(context.UserId, command.ConferenceId);
 	}
 }

@@ -7,7 +7,7 @@ public class RegistrationService(IConferenceRepository conferenceRepository,
 	: IRegistrationService
 {
 
-	public async Task RegisterUserForConference(Guid userId, Guid conferenceId)
+	public async Task RegisterUserForConferenceAsync(Guid userId, Guid conferenceId)
 	{
 		var conference = await conferenceRepository.GetByIdAsync(conferenceId);
 
@@ -30,8 +30,17 @@ public class RegistrationService(IConferenceRepository conferenceRepository,
 		}
 	}
 
-	public Task CancelRegistrationForConference(Guid userId, Guid conferenceId)
+	public async Task CancelRegistrationAsync(Guid registrationId)
 	{
-		throw new NotImplementedException();
+		var registration = await registrationRepository.GetByIdAsync(registrationId);
+
+		if (registration is null)
+		{
+			throw new RegistrationNotFoundException(registrationId);
+		}
+
+		registration.Cancel();
+
+		await registrationRepository.UpdateAsync(registration);
 	}
 }
