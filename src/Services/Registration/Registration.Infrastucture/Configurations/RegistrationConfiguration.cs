@@ -27,5 +27,8 @@ public class RegistrationConfiguration
 			.WithMany()
 			.HasForeignKey(r => r.ConferenceId)
 			.OnDelete(DeleteBehavior.Restrict);
+
+		builder.HasIndex(r => new { r.UserId, r.ConferenceId })
+			.IsUnique();
 	}
 }
