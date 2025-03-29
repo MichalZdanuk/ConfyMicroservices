@@ -1,5 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Registration.Domain.Enums;
+using Shared.Enums;
 
 namespace Registration.Infrastucture.Converters;
 public class RegistrationStatusEnumConverter

@@ -6,9 +6,9 @@ public class BrowseRegistrationsByConferenceQueryHandler(IRegistrationRepository
 {
 	public async Task<IReadOnlyList<ConferenceRegistrationDto>> Handle(BrowseRegistrationsByConferenceQuery query, CancellationToken cancellationToken)
 	{
-		var registrations = await registrationRepository.BrowseByConferenceIdAsync(query.ConferenceId);
+		var registrations = await registrationRepository.BrowseByConferenceIdAsync(query.ConferenceId, query.Statuses);
 
-		var registrationsDtos = registrations.Select(r => new ConferenceRegistrationDto(r.Id, r.UserId)).ToList();
+		var registrationsDtos = registrations.Select(r => new ConferenceRegistrationDto(r.Id, r.UserId, r.RegistrationStatus)).ToList();
 
 		return registrationsDtos;
 	}

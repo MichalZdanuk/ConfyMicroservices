@@ -1,4 +1,4 @@
-﻿namespace Registration.Domain.Enums;
+﻿namespace Shared.Enums;
 public enum RegistrationStatus
 {
 	Registered = 1,

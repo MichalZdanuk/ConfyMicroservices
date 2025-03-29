@@ -1,4 +1,5 @@
 ﻿using Registration.Domain.Repositories;
+using Shared.Enums;
 
 namespace Registration.Infrastucture.Repositories;
 public class RegistrationRepository(RegistrationDbContext context)
@@ -47,9 +48,16 @@ public class RegistrationRepository(RegistrationDbContext context)
 			.ToListAsync();
 	}
 
-	public async Task<IList<Domain.Entities.Registration>> BrowseByConferenceIdAsync(Guid conferenceId)
+	public async Task<IList<Domain.Entities.Registration>> BrowseByConferenceIdAsync(Guid conferenceId, List<RegistrationStatus> statuses)
 	{
-		return await context.Registrations.Where(r => r.ConferenceId == conferenceId).ToListAsync();
+		var query = context.Registrations.Where(r => r.ConferenceId == conferenceId);
+
+		if(statuses.Count > 0)
+		{
+			query = query.Where(r => statuses.Contains(r.RegistrationStatus));
+		}
+
+		return await query.ToListAsync();
 	}
 
 	public async Task<int> CountByUserIdAsync(Guid userId)

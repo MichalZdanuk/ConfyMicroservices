@@ -5,6 +5,7 @@ using Registration.Application.Registrations.AddRegistration;
 using Registration.Application.Registrations.BrowseMyRegistratinons;
 using Registration.Application.Registrations.BrowseRegistrationsByConference;
 using Registration.Application.Registrations.CancelRegistration;
+using Shared.Enums;
 using Shared.Pagination;
 
 namespace Registration.API.Controllers;
@@ -49,9 +50,10 @@ public class RegistrationController(IMediator mediator)
 	}
 
 	[HttpGet("conference/{conferenceId}")]
-	public async Task<ActionResult<IReadOnlyList<ConferenceRegistrationDto>>> BrowseRegistrationsByConference([FromRoute] Guid conferenceId)
+	public async Task<ActionResult<IReadOnlyList<ConferenceRegistrationDto>>> BrowseRegistrationsByConference([FromRoute] Guid conferenceId,
+		[FromQuery] List<RegistrationStatus> statuses)
 	{
-		var query = new BrowseRegistrationsByConferenceQuery(conferenceId);
+		var query = new BrowseRegistrationsByConferenceQuery(conferenceId, statuses ?? new List<RegistrationStatus>());
 
 		var result = await mediator.Send(query);
 
