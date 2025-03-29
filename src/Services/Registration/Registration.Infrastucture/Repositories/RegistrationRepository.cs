@@ -47,6 +47,11 @@ public class RegistrationRepository(RegistrationDbContext context)
 			.ToListAsync();
 	}
 
+	public async Task<IList<Domain.Entities.Registration>> BrowseByConferenceIdAsync(Guid conferenceId)
+	{
+		return await context.Registrations.Where(r => r.ConferenceId == conferenceId).ToListAsync();
+	}
+
 	public async Task<int> CountByUserIdAsync(Guid userId)
 	{
 		return await context.Registrations.CountAsync(r => r.UserId == userId);

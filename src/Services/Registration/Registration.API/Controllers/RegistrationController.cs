@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Registration.Application.Registrations.AddRegistration;
 using Registration.Application.Registrations.BrowseMyRegistratinons;
+using Registration.Application.Registrations.BrowseRegistrationsByConference;
 using Registration.Application.Registrations.CancelRegistration;
 using Shared.Pagination;
 
@@ -41,6 +42,16 @@ public class RegistrationController(IMediator mediator)
 		bool onlyPending = false)
 	{
 		var query = new BrowseMyRegistrationsQuery(request, onlyPending);
+
+		var result = await mediator.Send(query);
+
+		return Ok(result);
+	}
+
+	[HttpGet("conference/{conferenceId}")]
+	public async Task<ActionResult<IReadOnlyList<ConferenceRegistrationDto>>> BrowseRegistrationsByConference([FromRoute] Guid conferenceId)
+	{
+		var query = new BrowseRegistrationsByConferenceQuery(conferenceId);
 
 		var result = await mediator.Send(query);
 
