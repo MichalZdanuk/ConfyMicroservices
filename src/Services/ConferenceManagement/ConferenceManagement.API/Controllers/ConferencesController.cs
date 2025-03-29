@@ -3,6 +3,7 @@ using ConferenceManagement.Application.Conferences.CreateConference;
 using ConferenceManagement.Application.Conferences.GetConference;
 using ConferenceManagement.Application.Conferences.UpdateConfrerence;
 using ConferenceManagement.Application.Lectures.AddLecture;
+using Shared.Enums;
 
 namespace ConferenceManagement.API.Controllers;
 
@@ -14,9 +15,11 @@ public class ConferencesController(IMediator mediator)
 {
 	[HttpGet]
 	public async Task<ActionResult<PaginationResult<ConferenceDto>>> Browse([FromQuery] PaginationRequest request,
-		bool? IsOnline = null)
+		[FromQuery] List<ConferenceLanguage> languages, [FromQuery] bool? isOnline = null, [FromQuery] string? country = null,
+		[FromQuery] DateTime? startDate = null, [FromQuery] DateTime? endDate = null)
 	{
-		var query = new BrowseConferencesQuery(request);
+		var query = new BrowseConferencesQuery(request, languages ?? new List<ConferenceLanguage>(),
+			isOnline, country, startDate, endDate);
 
 		var result = await mediator.Send(query);
 

@@ -1,4 +1,6 @@
-﻿namespace ConferenceManagement.Infrastructure.Repositories;
+﻿using Shared.Enums;
+
+namespace ConferenceManagement.Infrastructure.Repositories;
 public class ConferenceRepository(ConferenceManagementDbContext context)
 	: IConferenceRepository
 {
@@ -25,9 +27,40 @@ public class ConferenceRepository(ConferenceManagementDbContext context)
 		return conference;
 	}
 
-	public async Task<List<Conference>> BrowseAsync(int pageNumber, int pageSize)
+	public async Task<List<Conference>> BrowseAsync(int pageNumber, int pageSize,
+		List<ConferenceLanguage> languages, bool? isOnline = null,
+		string? country = null, DateTime? startDate = null, DateTime? endDate = null)
 	{
-		return await context.Conferences
+		var query = context.Conferences.AsQueryable();
+
+		if (languages.Count > 0)
+		{
+			query = query.Where(r => languages.Contains(r.ConferenceLanguage));
+		}
+
+		if (isOnline.HasValue)
+		{
+			query = query.Where(c => c.ConferenceDetails.IsOnline == isOnline.Value);
+		}
+
+		if (!string.IsNullOrEmpty(country))
+		{
+			query = query.Where(c => c.Address.Country.ToLower() == country.ToLower());
+		}
+
+		if (startDate.HasValue)
+		{
+			query = query.Where(c => c.ConferenceDetails.StartDate >= startDate);
+		}
+
+		if (endDate.HasValue)
+		{
+			query = query.Where(c => c.ConferenceDetails.EndDate <= endDate);
+		}
+
+		var sql = query.ToQueryString();
+
+		return await query
 			.Skip((pageNumber - 1) * pageSize)
 			.Take(pageSize)
 			.ToListAsync();
