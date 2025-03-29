@@ -9,7 +9,7 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 		await conferenceRepository.AddAsync(conference);
 	}
 
-	private Domain.Entities.Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)
+	private Conference RetrieveConferenceFromCommand(CreateConferenceCommand command)
 	{
 		var conferenceLinks = ConferenceLinks.Of(command.ConferenceLinks.WebsiteUrl,
 			command.ConferenceLinks.FacebookUrl,
@@ -25,9 +25,9 @@ public class CreateConferenceCommandHandler(IConferenceRepository conferenceRepo
 			command.Address.AddressLine,
 			command.Address.ZipCode);
 
-		var conference = Domain.Entities.Conference.Create(command.Id,
+		var conference = Conference.Create(command.Id,
 			command.Name,
-			command.Language,
+			command.ConferenceLanguage,
 			conferenceLinks,
 			conferenceDetails,
 			address);

@@ -1,2 +1,4 @@
-﻿namespace ConferenceManagement.Application.Conferences.BrowseConferences;
-public record ConferenceDto(Guid Id, string Name, string Language, ConferenceDetailsDto ConferenceDetails, AddressDto Address);
+﻿using Shared.Enums;
+
+namespace ConferenceManagement.Application.Conferences.BrowseConferences;
+public record ConferenceDto(Guid Id, string Name, string ConferenceLanguage, ConferenceDetailsDto ConferenceDetails, AddressDto Address);

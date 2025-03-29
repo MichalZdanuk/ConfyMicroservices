@@ -1,6 +1,8 @@
-﻿namespace ConferenceManagement.Application.Conferences.CreateConference;
+﻿using Shared.Enums;
+
+namespace ConferenceManagement.Application.Conferences.CreateConference;
 public record CreateConferenceCommand(string Name,
-	string Language,
+	ConferenceLanguage ConferenceLanguage,
 	CreateConferenceLinksDto ConferenceLinks,
 	CreateConferenceDetailsDto ConferenceDetails,
 	CreateAddressDto Address) : ICommand

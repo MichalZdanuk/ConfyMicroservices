@@ -10,7 +10,7 @@ public class BrowseConferencesQueryHandler(IConferenceRepository conferenceRepos
 			.Select(c => new ConferenceDto(
 				c.Id,
 				c.Name,
-				c.Language,
+				c.ConferenceLanguage.ToString(),
 				new ConferenceDetailsDto(
 					c.ConferenceDetails.StartDate,
 					c.ConferenceDetails.EndDate,

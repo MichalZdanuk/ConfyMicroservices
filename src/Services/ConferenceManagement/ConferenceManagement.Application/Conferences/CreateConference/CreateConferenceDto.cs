@@ -1,6 +1,8 @@
-﻿namespace ConferenceManagement.Application.Conferences.CreateConference;
+﻿using Shared.Enums;
+
+namespace ConferenceManagement.Application.Conferences.CreateConference;
 public record CreateConferenceDto(string Name,
-	string Language,
+	ConferenceLanguage ConferenceLanguage,
 	CreateConferenceLinksDto ConferenceLinksDto,
 	CreateConferenceDetailsDto ConferenceDetailsDto,
 	CreateAddressDto AddressDto);

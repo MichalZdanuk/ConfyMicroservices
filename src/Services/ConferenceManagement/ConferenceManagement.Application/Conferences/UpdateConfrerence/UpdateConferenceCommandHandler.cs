@@ -25,7 +25,7 @@ public class UpdateConferenceCommandHandler(IConferenceRepository conferenceRepo
 			command.Address.AddressLine,
 			command.Address.ZipCode);
 
-		conference.Update(command.Name, command.Language, updatedConferenceLinks, updatedConferenceDetails, updatedAddress);
+		conference.Update(command.Name, command.ConferenceLanguage, updatedConferenceLinks, updatedConferenceDetails, updatedAddress);
 
 		await conferenceRepository.UpdateAsync(conference);
 	}

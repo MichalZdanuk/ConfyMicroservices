@@ -4,14 +4,14 @@ public class Conference : Aggregate
 	private readonly List<Guid> _lectureIds = new();
 	public IReadOnlyList<Guid> LectureIds => _lectureIds.AsReadOnly();
 	public string Name {  get; private set; } = default!;
-	public string Language { get; private set; } = default!;
+	public ConferenceLanguage ConferenceLanguage { get; private set; } = default!;
 	public ConferenceLinks ConferenceLinks { get; private set; } = default!;
 	public ConferenceDetails ConferenceDetails { get; private set; } = default!;
 	public Address Address { get; private set; } = default!;
 
 	public static Conference Create(Guid id,
 		string name,
-		string language,
+		ConferenceLanguage conferenceLanguage,
 		ConferenceLinks conferenceLinks,
 		ConferenceDetails details,
 		Address address)
@@ -20,7 +20,7 @@ public class Conference : Aggregate
 		{
 			Id = id,
 			Name = name,
-			Language = language,
+			ConferenceLanguage = conferenceLanguage,
 			ConferenceLinks = conferenceLinks,
 			ConferenceDetails = details,
 			Address = address
@@ -35,13 +35,13 @@ public class Conference : Aggregate
 	}
 
 	public void Update(string name,
-		string language,
+		ConferenceLanguage conferenceLanguage,
 		ConferenceLinks conferenceLinks,	
 		ConferenceDetails details,
 		Address address)
 	{
 		Name = name;
-		Language = language;
+		ConferenceLanguage = conferenceLanguage;
 		ConferenceLinks = conferenceLinks;
 		ConferenceDetails = details;
 		Address = address;

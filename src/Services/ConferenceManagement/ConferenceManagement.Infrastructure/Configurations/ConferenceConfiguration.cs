@@ -1,4 +1,6 @@
-﻿namespace ConferenceManagement.Infrastructure.Configurations;
+﻿using ConferenceManagement.Infrastructure.Converters;
+
+namespace ConferenceManagement.Infrastructure.Configurations;
 public class ConferenceConfiguration
 	: BaseEntityConfiguration<Conference>,
 	IEntityTypeConfiguration<Conference>
@@ -12,7 +14,8 @@ public class ConferenceConfiguration
 		builder.Property(c => c.Name)
 			.IsRequired();
 
-		builder.Property(c => c.Language)
+		builder.Property(c => c.ConferenceLanguage)
+			.HasConversion(new ConferenceLanguageEnumConverter())
 			.IsRequired();
 
 		builder.ComplexProperty(c => c.ConferenceLinks, conferenceLinksBuilder =>
