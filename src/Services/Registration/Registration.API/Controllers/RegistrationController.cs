@@ -37,9 +37,10 @@ public class RegistrationController(IMediator mediator)
 	}
 
 	[HttpGet]
-	public async Task<ActionResult<PaginationResult<UserRegistrationDto>>> BrowseMyRegistrations([FromQuery] PaginationRequest request)
+	public async Task<ActionResult<PaginationResult<UserRegistrationDto>>> BrowseMyRegistrations([FromQuery] PaginationRequest request,
+		bool onlyPending = false)
 	{
-		var query = new BrowseMyRegistrationsQuery(request);
+		var query = new BrowseMyRegistrationsQuery(request, onlyPending);
 
 		var result = await mediator.Send(query);
 

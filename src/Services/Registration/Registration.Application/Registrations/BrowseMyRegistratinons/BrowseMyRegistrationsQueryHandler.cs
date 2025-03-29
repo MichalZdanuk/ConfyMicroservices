@@ -9,7 +9,8 @@ public class BrowseMyRegistrationsQueryHandler(IContext context,
 {
 	public async Task<PaginationResult<UserRegistrationDto>> Handle(BrowseMyRegistrationsQuery query, CancellationToken cancellationToken)
 	{
-		var registrations = await registrationRepository.BrowseByUserIdAsync(context.UserId);
+		var registrations = await registrationRepository.BrowseByUserIdAsync(context.UserId,
+			query.OnlyPending, query.Pagination.PageNumber, query.Pagination.PageSize);
 
 		var registrationsDtos = registrations.Select(r => new UserRegistrationDto(
 			r.Id,

@@ -28,12 +28,22 @@ public class RegistrationRepository(RegistrationDbContext context)
 			.SingleOrDefaultAsync(r => r.Id == id);
 	}
 
-	public async Task<IList<Domain.Entities.Registration>> BrowseByUserIdAsync(Guid userId)
+	public async Task<IList<Domain.Entities.Registration>> BrowseByUserIdAsync(Guid userId,
+		bool onlyPending, int pageNumber, int pageSize)
 	{
-		return await context.Registrations
+		var registrationsQuery = context.Registrations
 			.Include(r => r.Conference)
-			.Where(r => r.UserId == userId)
+			.Where(r => r.UserId == userId);
+
+		if (onlyPending)
+		{
+			registrationsQuery = registrationsQuery.Where(r => r.Conference.StartDate > DateTime.UtcNow);
+		}
+
+		return await registrationsQuery
 			.OrderBy(r => r.Conference.StartDate)
+			.Skip((pageNumber - 1) * pageSize)
+			.Take(pageSize)
 			.ToListAsync();
 	}
 
