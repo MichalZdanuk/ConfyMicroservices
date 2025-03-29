@@ -58,8 +58,6 @@ public class ConferenceRepository(ConferenceManagementDbContext context)
 			query = query.Where(c => c.ConferenceDetails.EndDate <= endDate);
 		}
 
-		var sql = query.ToQueryString();
-
 		return await query
 			.Skip((pageNumber - 1) * pageSize)
 			.Take(pageSize)
