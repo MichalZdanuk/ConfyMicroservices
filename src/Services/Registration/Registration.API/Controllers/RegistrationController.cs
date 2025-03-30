@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Registration.Application.Registrations.AddRegistration;
-using Registration.Application.Registrations.BrowseMyRegistratinons;
+using Registration.Application.Registrations.BrowseMyRegistrations;
 using Registration.Application.Registrations.BrowseRegistrationsByConference;
 using Registration.Application.Registrations.CancelRegistration;
 using Shared.Enums;

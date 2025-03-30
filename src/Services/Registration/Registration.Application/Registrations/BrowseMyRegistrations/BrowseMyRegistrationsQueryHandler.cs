@@ -2,7 +2,7 @@
 using Registration.Domain.Repositories;
 using Shared.Context;
 
-namespace Registration.Application.Registrations.BrowseMyRegistratinons;
+namespace Registration.Application.Registrations.BrowseMyRegistrations;
 public class BrowseMyRegistrationsQueryHandler(IContext context,
 	IRegistrationRepository registrationRepository)
 	: IRequestHandler<BrowseMyRegistrationsQuery, PaginationResult<UserRegistrationDto>>
