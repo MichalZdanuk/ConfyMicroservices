@@ -1,5 +1,4 @@
 ﻿using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Registration.Domain.Entities;
 using Registration.Infrastucture.Converters;
 using Shared.Infrastructure;
 
