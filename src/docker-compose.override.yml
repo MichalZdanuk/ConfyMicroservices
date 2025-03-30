@@ -107,6 +107,7 @@ services:
       - registrationdb
       - messagebroker
       - authentication.api
+      - conferencemanagement.api
     ports:
       - "6002:8080"
       - "6062:8081"
@@ -130,6 +131,8 @@ services:
       - notificationdb
       - messagebroker
       - authentication.api
+      - conferencemanagement.api
+      - registration.api
     ports:
       - "6003:8080"
       - "6063:8081"
