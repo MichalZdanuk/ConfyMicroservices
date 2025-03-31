@@ -55,7 +55,6 @@ public class ConferencesController(IMediator mediator)
 	public async Task<ActionResult> UpdateConference([FromRoute]Guid id, [FromBody]UpdateConferenceDto dto)
 	{
 		var command = new UpdateConferenceCommand(id,
-			dto.Name,
 			dto.ConferenceLanguage,
 			dto.conferenceLinksDto,
 			dto.conferenceDetailsDto,

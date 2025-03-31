@@ -1,8 +1,7 @@
 ﻿using Shared.Enums;
 
 namespace ConferenceManagement.Application.Conferences.UpdateConfrerence;
-public record UpdateConferenceDto(string Name,
-	ConferenceLanguage ConferenceLanguage,
+public record UpdateConferenceDto(ConferenceLanguage ConferenceLanguage,
 	UpdateConferenceLinksDto conferenceLinksDto,
 	UpdateConferenceDetailsDto conferenceDetailsDto,
 	UpdateAddressDto AddressDto);
