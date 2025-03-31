@@ -11,7 +11,7 @@ public class NotificationDbContext
 	}
 
 	public DbSet<User> Users { get; set; }
-
+	public DbSet<Domain.Entities.Notification> Notifications { get; set; }
 	protected override void OnModelCreating(ModelBuilder modelBuilder)
 	{
 		modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());

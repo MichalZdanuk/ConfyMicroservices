@@ -10,5 +10,9 @@ public class UserConfiguration
 
 		builder.Property(u => u.Email)
 			.IsRequired();
+
+		builder.HasMany<Domain.Entities.Notification>()
+			.WithOne()
+			.HasForeignKey(r => r.UserId);
 	}
 }
