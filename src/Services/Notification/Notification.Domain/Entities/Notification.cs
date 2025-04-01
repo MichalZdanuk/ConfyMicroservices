@@ -4,6 +4,7 @@ namespace Notification.Domain.Entities;
 public class Notification : Entity
 {
 	public Guid UserId { get; private set; }
+	public Guid ConferenceId { get; private set; }
 	public NotificationType NotificationType { get; private set; }
 	public NotificationStatus NotificationStatus { get; private set; }
 	public string Content { get; private set; } = default!;
@@ -14,11 +15,13 @@ public class Notification : Entity
 	}
 
 	private Notification(Guid userId,
+		Guid conferenceId,
 		NotificationType notificationType,
 		string content)
 	{
 		Id = Guid.NewGuid();
 		UserId = userId;
+		ConferenceId = conferenceId;
 		NotificationType = notificationType;
 		NotificationStatus = Enums.NotificationStatus.Created;
 		Content = content;
@@ -26,10 +29,11 @@ public class Notification : Entity
 	}
 
 	public static Notification Create(Guid userId,
+		Guid conferenceId,
 		NotificationType notificationType,
 		string content)
 	{
-		return new Notification(userId, notificationType, content);
+		return new Notification(userId, conferenceId, notificationType, content);
 	}
 
 	public void MarkAsSent()

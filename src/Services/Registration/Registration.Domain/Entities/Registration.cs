@@ -18,7 +18,7 @@ public class Registration : Aggregate
 		Conference = conference;
 		RegistrationStatus = RegistrationStatus.Registered;
 
-		AddDomainEvent(new UserRegisteredForConferenceEvent(userId, conferenceId));
+		AddDomainEvent(new UserRegisteredForConferenceEvent(userId, conferenceId, conference.Name));
 	}
 
 	public static Registration Create(Guid userId, Guid conferenceId, Conference conference)
@@ -45,7 +45,7 @@ public class Registration : Aggregate
 
 		RegistrationStatus = RegistrationStatus.Canceled;
 
-		AddDomainEvent(new RegistrationForConferenceCanceledEvent(UserId, ConferenceId));
+		AddDomainEvent(new RegistrationForConferenceCanceledEvent(UserId, ConferenceId, Conference.Name));
 	}
 
 	public void ReRegister()
@@ -62,6 +62,6 @@ public class Registration : Aggregate
 
 		RegistrationStatus = RegistrationStatus.Registered;
 
-		AddDomainEvent(new UserReRegisteredForConferenceEvent(UserId, ConferenceId));
+		AddDomainEvent(new UserReRegisteredForConferenceEvent(UserId, ConferenceId, Conference.Name));
 	}
 }

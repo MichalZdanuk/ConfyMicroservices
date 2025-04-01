@@ -1,0 +1,27 @@
+﻿using MassTransit;
+using Microsoft.Extensions.Logging;
+using Registration.Domain.Events;
+using Shared.Messaging.Events;
+
+namespace Registration.Application.EventHandlers.Domain;
+public class UserRegisteredForConferenceEventHandler(ILogger<UserRegisteredForConferenceEventHandler> logger,
+	IPublishEndpoint publishEndpoint)
+	: INotificationHandler<UserRegisteredForConferenceEvent>
+{
+	public async Task Handle(UserRegisteredForConferenceEvent domainEvent, CancellationToken cancellationToken)
+	{
+		logger.LogInformation("Domain event handled: {domainEvent}", domainEvent.GetType().Name);
+
+		var addedRegistrationForConferenceEvent = RetrieveAddedRegistrationForConferenceEvent(domainEvent);
+
+		await publishEndpoint.Publish(addedRegistrationForConferenceEvent, cancellationToken);
+	}
+
+	private AddedRegistrationForConferenceEvent RetrieveAddedRegistrationForConferenceEvent(UserRegisteredForConferenceEvent domainEvent)
+		=> new AddedRegistrationForConferenceEvent()
+		{
+			UserId = domainEvent.UserId,
+			ConferenceId = domainEvent.ConferenceId,
+			ConferenceName = domainEvent.ConferenceName,
+		};
+}

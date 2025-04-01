@@ -24,5 +24,8 @@ public class NotificationConfiguration
 
 		builder.Property(n => n.SentAt)
 			.IsRequired(false);
+
+		builder.Property(n => n.ConferenceId)
+			.IsRequired();
 	}
 }
