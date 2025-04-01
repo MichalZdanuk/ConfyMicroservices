@@ -1,5 +1,6 @@
 ﻿
 
+
 namespace Notification.Infrastructure.Repositories;
 public class NotificationRepository(NotificationDbContext context)
 	: INotificationRepository
@@ -9,13 +10,25 @@ public class NotificationRepository(NotificationDbContext context)
 		await context.Notifications.AddAsync(notification);
 	}
 
-	public async Task<Domain.Entities.Notification?> GetByIdAsync(Guid id)
-	{
-		return await context.Notifications.SingleOrDefaultAsync(notification => notification.Id == id);
-	}
-
 	public async Task UpdateAsync(Domain.Entities.Notification notification)
 	{
 		context.Notifications.Update(notification);
+	}
+
+	public Task<List<Domain.Entities.Notification>> BrowseByUserIdAsync(Guid userId, int pageNumber, int pageSize)
+	{
+		var notificationsQuery = context.Notifications
+			.Where(n => n.UserId == userId);
+
+		return notificationsQuery
+			.OrderByDescending(n => n.CreationDate)
+			.Skip((pageNumber - 1) * pageSize)
+			.Take(pageSize)
+			.ToListAsync();
+	}
+
+	public async Task<int> CountByUserIdAsync(Guid userId)
+	{
+		return await context.Notifications.CountAsync(n => n.UserId == userId);
 	}
 }
