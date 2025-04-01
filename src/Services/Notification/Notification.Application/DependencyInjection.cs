@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Notification.Application.Services;
 using Shared.Context;
 using Shared.DependencyInjection;
 using System.Reflection;
@@ -16,6 +17,7 @@ public static class Extensions
 		services.AddMediatRWithBehaviors(notificationApplicationAssembly);
 
 		services.AddConfyHttpContext();
+		services.AddScoped<INotificationService, NotificationService>();
 
 		return services;
 	}
