@@ -6,4 +6,9 @@ public class UserRepository(NotificationDbContext dbContext)
 	{
 		await dbContext.Users.AddAsync(user);
 	}
+
+	public async Task<User?> GetByIdAsync(Guid id)
+	{
+		return await dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
+	}
 }

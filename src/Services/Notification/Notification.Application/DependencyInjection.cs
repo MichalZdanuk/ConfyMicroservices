@@ -17,7 +17,7 @@ public static class Extensions
 		services.AddMediatRWithBehaviors(notificationApplicationAssembly);
 
 		services.AddConfyHttpContext();
-		services.AddScoped<INotificationService, NotificationService>();
+		services.AddScoped<INotificationSenderService, NotificationSenderService>();
 
 		return services;
 	}
