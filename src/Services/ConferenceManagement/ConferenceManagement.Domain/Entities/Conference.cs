@@ -45,6 +45,8 @@ public class Conference : Aggregate
 		ConferenceLinks = conferenceLinks;
 		ConferenceDetails = details;
 		Address = address;
+
+		AddDomainEvent(new UpdatedConferenceEvent(Id, Name));
 	}
 
 	public void AddLecture(Guid lectureId)
