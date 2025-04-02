@@ -11,7 +11,7 @@ public class UpdateConferenceCommandHandler(IConferenceRepository conferenceRepo
 			throw new ConferenceNotFoundException(command.ConferenceId);
 		}
 
-		if (conference.ConferenceDetails.StartDate >= DateTime.UtcNow)
+		if (conference.ConferenceDetails.StartDate <= DateTime.UtcNow)
 		{
 			throw new CannotModifyActiveConferenceException(conference.Id);
 		}
