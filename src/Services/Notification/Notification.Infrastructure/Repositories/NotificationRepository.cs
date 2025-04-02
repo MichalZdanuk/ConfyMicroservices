@@ -10,6 +10,11 @@ public class NotificationRepository(NotificationDbContext context)
 		await context.Notifications.AddAsync(notification);
 	}
 
+	public async Task AddRangeAsync(List<Domain.Entities.Notification> notifications)
+	{
+		await context.Notifications.AddRangeAsync(notifications);
+	}
+
 	public async Task UpdateAsync(Domain.Entities.Notification notification)
 	{
 		context.Notifications.Update(notification);

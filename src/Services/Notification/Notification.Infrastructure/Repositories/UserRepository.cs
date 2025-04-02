@@ -11,4 +11,11 @@ public class UserRepository(NotificationDbContext dbContext)
 	{
 		return await dbContext.Users.FirstOrDefaultAsync(u => u.Id == id);
 	}
+
+	public async Task<Dictionary<Guid, string>> GetUserEmailsByIdsAsync(IEnumerable<Guid> userIds)
+	{
+		return await dbContext.Users
+			.Where(u => userIds.Contains(u.Id))
+			.ToDictionaryAsync(u => u.Id, u => u.Email);
+	}
 }

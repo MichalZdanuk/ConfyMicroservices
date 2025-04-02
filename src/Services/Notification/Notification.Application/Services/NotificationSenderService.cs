@@ -10,4 +10,14 @@ public class NotificationSenderService(ILogger<NotificationSenderService> logger
 	
 		await Task.CompletedTask;
 	}
+
+	public async Task SendNotifications(IEnumerable<NotificationPayload> notificationPayloads)
+	{
+		foreach (var payload in notificationPayloads)
+		{
+			logger.LogInformation($"[MOCKED] successfully sent notification (type: {payload.NotificationType}) for: {payload.Email} with content: `{payload.Content}` at [{payload.SentAt}]");
+		}
+
+		await Task.CompletedTask;
+	}
 }
