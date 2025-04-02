@@ -30,29 +30,18 @@ public class ConferenceUpdatedNotificationEventHandler
 
 	protected override async Task HandleMessage(ConsumeContext<ConferenceUpdatedNotificationEvent> context)
 	{
-		try
-		{
+		var userEmails = await _userRepository.GetUserEmailsByIdsAsync(context.Message.UserIds);
 
-			var userEmails = await _userRepository.GetUserEmailsByIdsAsync(context.Message.UserIds);
+		var notifications = PrepareNotifications(context.Message);
 
-			var notifications = PrepareNotifications(context.Message);
+		await _notificationRepository.AddRangeAsync(notifications);
 
-			await _notificationRepository.AddRangeAsync(notifications);
+		var notificationPayloads = notifications
+			.Where(n => userEmails.ContainsKey(n.UserId))
+			.Select(n => PrepareNotificationPayload(n, userEmails[n.UserId]))
+			.ToList();
 
-			var notificationPayloads = notifications
-				.Where(n => userEmails.ContainsKey(n.UserId))
-				.Select(n => PrepareNotificationPayload(n, userEmails[n.UserId]))
-				.ToList();
-
-			await _notificationSenderService.SendNotifications(notificationPayloads);
-
-		}
-		catch (Exception ex)
-		{
-
-			throw;
-		}
-		
+		await _notificationSenderService.SendNotifications(notificationPayloads);
 	}
 
 	private List<Domain.Entities.Notification> PrepareNotifications(ConferenceUpdatedNotificationEvent conferenceUpdatedNotificationEvent)
