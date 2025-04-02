@@ -11,11 +11,6 @@ public class UpdateConferenceCommandHandler(IConferenceRepository conferenceRepo
 			throw new ConferenceNotFoundException(command.ConferenceId);
 		}
 
-		if (conference.ConferenceDetails.StartDate <= DateTime.UtcNow)
-		{
-			throw new CannotModifyActiveConferenceException(conference.Id);
-		}
-
 		var updatedConferenceLinks = ConferenceLinks.Of(command.ConferenceLinks.WebsiteUrl,
 			command.ConferenceLinks.FacebookUrl,
 			command.ConferenceLinks.InstagramUrl);

@@ -1,4 +1,6 @@
-﻿namespace ConferenceManagement.Domain.Entities;
+﻿using ConferenceManagement.Domain.Exceptions;
+
+namespace ConferenceManagement.Domain.Entities;
 public class Conference : Aggregate
 {
 	private readonly List<Guid> _lectureIds = new();
@@ -16,6 +18,11 @@ public class Conference : Aggregate
 		ConferenceDetails details,
 		Address address)
 	{
+		if (details.StartDate <= DateTime.UtcNow)
+		{
+			throw new InvalidConferenceDateException(details.StartDate);
+		}
+
 		var conference = new Conference
 		{
 			Id = id,
@@ -40,6 +47,11 @@ public class Conference : Aggregate
 		ConferenceDetails details,
 		Address address)
 	{
+		if (ConferenceDetails.StartDate <= DateTime.UtcNow)
+		{
+			throw new CannotModifyActiveConferenceException(Id);
+		}
+
 		Name = name;
 		ConferenceLanguage = conferenceLanguage;
 		ConferenceLinks = conferenceLinks;
