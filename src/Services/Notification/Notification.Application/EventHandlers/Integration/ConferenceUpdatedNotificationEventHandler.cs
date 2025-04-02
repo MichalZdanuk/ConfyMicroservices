@@ -50,10 +50,14 @@ public class ConferenceUpdatedNotificationEventHandler
 
 		foreach(var userId in conferenceUpdatedNotificationEvent.UserIds)
 		{
-			notifications.Add(Domain.Entities.Notification.Create(userId,
+			var notification = Domain.Entities.Notification.Create(userId,
 				conferenceUpdatedNotificationEvent.ConferenceId,
 				Domain.Enums.NotificationType.ConferenceUpdated,
-				$"There’s an important update regarding conference: \"{conferenceUpdatedNotificationEvent.ConferenceName}\". Please check the latest details."));
+				$"There’s an important update regarding conference: \"{conferenceUpdatedNotificationEvent.ConferenceName}\". Please check the latest details.");
+
+			notification.MarkAsSent();
+
+			notifications.Add(notification);
 		}
 
 		return notifications;

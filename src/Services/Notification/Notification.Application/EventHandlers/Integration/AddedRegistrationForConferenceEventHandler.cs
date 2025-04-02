@@ -31,7 +31,6 @@ public class AddedRegistrationForConferenceEventHandler
 	protected override async Task HandleMessage(ConsumeContext<AddedRegistrationForConferenceEvent> context)
 	{
 		var notification = PrepareNotification(context.Message);
-		notification.MarkAsSent();
 
 		var user = await _userRepository.GetByIdAsync(notification.UserId);
 
@@ -56,6 +55,8 @@ public class AddedRegistrationForConferenceEventHandler
 			addedRegistrationForConferenceEvent.ConferenceId,
 			Domain.Enums.NotificationType.Registration,
 			$"You have successfully registered for the conference \"{addedRegistrationForConferenceEvent.ConferenceName}\". We look forward to seeing you there!");
+
+		notification.MarkAsSent();
 
 		return notification;
 	}
