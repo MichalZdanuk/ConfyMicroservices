@@ -7,7 +7,7 @@ namespace Notification.API.Controllers;
 [Authorize]
 [Route("notifications")]
 [ApiController]
-public class NotificationController(IMediator mediator)
+public class NotificationsController(IMediator mediator)
 	: ControllerBase
 {
 	[HttpGet]
