@@ -1,6 +1,8 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
+using Notification.Application.Factories;
 using Notification.Application.Services;
+using Notification.Domain.Enums;
 using Notification.Domain.Repositories;
 using Shared.Messaging.Consumers;
 using Shared.Messaging.Events;
@@ -10,18 +12,21 @@ namespace Notification.Application.EventHandlers.Integration;
 public class ConferenceUpdatedNotificationEventHandler
 	: TransactionalConsumer<ConferenceUpdatedNotificationEvent>
 {
+	private readonly INotificationFactory _notificationFactory;
 	private readonly INotificationSenderService _notificationSenderService;
 	private readonly INotificationRepository _notificationRepository;
 	private readonly IUserRepository _userRepository;
 	private readonly ILogger<ConferenceUpdatedNotificationEventHandler> _logger;
 
-	public ConferenceUpdatedNotificationEventHandler(INotificationSenderService notificationSenderService,
+	public ConferenceUpdatedNotificationEventHandler(INotificationFactory notificationFactory,
+		INotificationSenderService notificationSenderService,
 		INotificationRepository notificationRepository,
 		IUserRepository userRepository,
 		ILogger<ConferenceUpdatedNotificationEventHandler> logger,
 		IUnitOfWork unitOfWork)
 			: base(unitOfWork, logger)
 	{
+		_notificationFactory = notificationFactory;
 		_notificationSenderService = notificationSenderService;
 		_notificationRepository = notificationRepository;
 		_userRepository = userRepository;
@@ -32,37 +37,19 @@ public class ConferenceUpdatedNotificationEventHandler
 	{
 		var userEmails = await _userRepository.GetUserEmailsByIdsAsync(context.Message.UserIds);
 
-		var notifications = PrepareNotifications(context.Message);
+		var notifications = _notificationFactory.CreateNotifications(
+			context.Message.UserIds,
+			context.Message.ConferenceId,
+			NotificationType.ConferenceUpdated,
+			context.Message.ConferenceName);
 
 		await _notificationRepository.AddRangeAsync(notifications);
 
 		var notificationPayloads = notifications
 			.Where(n => userEmails.ContainsKey(n.UserId))
-			.Select(n => PrepareNotificationPayload(n, userEmails[n.UserId]))
+			.Select(n => n.MapToPayload(userEmails[n.UserId]))
 			.ToList();
 
 		await _notificationSenderService.SendNotifications(notificationPayloads);
 	}
-
-	private List<Domain.Entities.Notification> PrepareNotifications(ConferenceUpdatedNotificationEvent conferenceUpdatedNotificationEvent)
-	{
-		var notifications = new List<Domain.Entities.Notification>();
-
-		foreach(var userId in conferenceUpdatedNotificationEvent.UserIds)
-		{
-			var notification = Domain.Entities.Notification.Create(userId,
-				conferenceUpdatedNotificationEvent.ConferenceId,
-				Domain.Enums.NotificationType.ConferenceUpdated,
-				$"There’s an important update regarding conference: \"{conferenceUpdatedNotificationEvent.ConferenceName}\". Please check the latest details.");
-
-			notification.MarkAsSent();
-
-			notifications.Add(notification);
-		}
-
-		return notifications;
-	}
-
-	private NotificationPayload PrepareNotificationPayload(Domain.Entities.Notification notification, string email)
-		=> new NotificationPayload(notification.NotificationType.ToString(), email, notification.Content, notification.SentAt ?? DateTime.UtcNow);
 }

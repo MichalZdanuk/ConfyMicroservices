@@ -1,6 +1,8 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.Logging;
+using Notification.Application.Factories;
 using Notification.Application.Services;
+using Notification.Domain.Enums;
 using Notification.Domain.Exceptions;
 using Notification.Domain.Repositories;
 using Shared.Messaging.Consumers;
@@ -11,17 +13,20 @@ namespace Notification.Application.EventHandlers.Integration;
 public class AddedRegistrationForConferenceEventHandler
 	: TransactionalConsumer<AddedRegistrationForConferenceEvent>
 {
+	private readonly INotificationFactory _notificationFactory;
 	private readonly IUserRepository _userRepository;
 	private readonly INotificationRepository _notificationRepository;
 	private readonly INotificationSenderService _notificationSenderService;
 	private readonly ILogger<AddedRegistrationForConferenceEventHandler> _logger;
 
-	public AddedRegistrationForConferenceEventHandler(IUserRepository userRepository,
+	public AddedRegistrationForConferenceEventHandler(INotificationFactory notificationFactory,
+		IUserRepository userRepository,
 		INotificationRepository notificationRepository,
 		INotificationSenderService notificationSenderService,
 		ILogger<AddedRegistrationForConferenceEventHandler> logger,
 		IUnitOfWork unitOfWork) : base(unitOfWork, logger)
 	{
+		_notificationFactory = notificationFactory;
 		_userRepository = userRepository;
 		_notificationRepository = notificationRepository;
 		_notificationSenderService = notificationSenderService;
@@ -30,7 +35,11 @@ public class AddedRegistrationForConferenceEventHandler
 
 	protected override async Task HandleMessage(ConsumeContext<AddedRegistrationForConferenceEvent> context)
 	{
-		var notification = PrepareNotification(context.Message);
+		var notification = _notificationFactory.CreateNotification(
+			context.Message.UserId,
+			context.Message.ConferenceId,
+			NotificationType.Registration,
+			context.Message.ConferenceName);
 
 		var user = await _userRepository.GetByIdAsync(notification.UserId);
 
@@ -41,23 +50,8 @@ public class AddedRegistrationForConferenceEventHandler
 
 		await _notificationRepository.AddAsync(notification);
 
-		var notificationPayload = PrepareNotificationPayload(notification, user.Email);
+		var notificationPayload = notification.MapToPayload(user.Email);
 
 		await _notificationSenderService.SendNotification(notificationPayload);
-	}
-
-	private NotificationPayload PrepareNotificationPayload(Domain.Entities.Notification notification, string email)
-		=> new NotificationPayload(notification.NotificationType.ToString(), email, notification.Content, notification.SentAt.HasValue ? DateTime.UtcNow : notification.SentAt!.Value);
-
-	private Domain.Entities.Notification PrepareNotification(AddedRegistrationForConferenceEvent addedRegistrationForConferenceEvent)
-	{
-		var notification = Domain.Entities.Notification.Create(addedRegistrationForConferenceEvent.UserId,
-			addedRegistrationForConferenceEvent.ConferenceId,
-			Domain.Enums.NotificationType.Registration,
-			$"You have successfully registered for the conference \"{addedRegistrationForConferenceEvent.ConferenceName}\". We look forward to seeing you there!");
-
-		notification.MarkAsSent();
-
-		return notification;
 	}
 }
