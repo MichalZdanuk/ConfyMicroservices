@@ -23,6 +23,11 @@ public class Conference : Aggregate
 			throw new InvalidConferenceDateException(details.StartDate);
 		}
 
+		if (details.StartDate >= details.EndDate)
+		{
+			throw new ConferenceDatesCollisionException();
+		}
+
 		var conference = new Conference
 		{
 			Id = id,
