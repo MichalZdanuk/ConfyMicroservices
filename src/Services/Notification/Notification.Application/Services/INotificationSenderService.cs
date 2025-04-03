@@ -1,4 +1,6 @@
-﻿namespace Notification.Application.Services;
+﻿using Notification.Domain.ValueObjects;
+
+namespace Notification.Application.Services;
 public interface INotificationSenderService
 {
 	public Task SendNotification(NotificationPayload notificationPayload);

@@ -1,4 +1,4 @@
-﻿using Notification.Application.Services;
+﻿using Notification.Domain.ValueObjects;
 
 namespace Notification.Application;
 public static class Extensions

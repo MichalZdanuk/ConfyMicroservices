@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Notification.Domain.ValueObjects;
 
 namespace Notification.Application.Services;
 public class NotificationSenderService(ILogger<NotificationSenderService> logger)
