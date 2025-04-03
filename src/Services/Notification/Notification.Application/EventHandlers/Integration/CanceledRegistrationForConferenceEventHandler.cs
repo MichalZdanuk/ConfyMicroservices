@@ -52,6 +52,6 @@ public class CanceledRegistrationForConferenceEventHandler
 
 		var notificationPayload = notification.MapToPayload(user.Email);
 
-		await _notificationSenderService.SendNotification(notificationPayload);
+		await _notificationSenderService.SendNotificationAsync(notificationPayload);
 	}
 }

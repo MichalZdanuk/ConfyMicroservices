@@ -50,6 +50,6 @@ public class ConferenceUpdatedNotificationEventHandler
 			.Select(n => n.MapToPayload(userEmails[n.UserId]))
 			.ToList();
 
-		await _notificationSenderService.SendNotifications(notificationPayloads);
+		await _notificationSenderService.SendNotificationsAsync(notificationPayloads);
 	}
 }

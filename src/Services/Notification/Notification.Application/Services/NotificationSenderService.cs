@@ -5,14 +5,14 @@ namespace Notification.Application.Services;
 public class NotificationSenderService(ILogger<NotificationSenderService> logger)
 	: INotificationSenderService
 {
-	public async Task SendNotification(NotificationPayload notificationPayload)
+	public async Task SendNotificationAsync(NotificationPayload notificationPayload)
 	{
 		logger.LogInformation($"[MOCKED] successfully sent notification (type: {notificationPayload.NotificationType}) for: {notificationPayload.Email} with content: `{notificationPayload.Content}` at [{notificationPayload.SentAt}]");
 	
 		await Task.CompletedTask;
 	}
 
-	public async Task SendNotifications(IEnumerable<NotificationPayload> notificationPayloads)
+	public async Task SendNotificationsAsync(IEnumerable<NotificationPayload> notificationPayloads)
 	{
 		foreach (var payload in notificationPayloads)
 		{
