@@ -16,6 +16,7 @@ namespace Registration.API.Controllers;
 public class RegistrationController(IMediator mediator)
 	: ControllerBase
 {
+	[Authorize(Roles = "Attendee")]
 	[HttpPost]
 	public async Task<ActionResult> AddRegistration([FromBody] AddRegistrationDto dto)
 	{
@@ -28,6 +29,7 @@ public class RegistrationController(IMediator mediator)
 		return Created(uri, new { Id = registrationId });
 	}
 
+	[Authorize(Roles = "Attendee")]
 	[HttpPut("{id}/cancel")]
 	public async Task<ActionResult> CancelRegistration([FromRoute] Guid id)
 	{
@@ -38,6 +40,7 @@ public class RegistrationController(IMediator mediator)
 		return Accepted();
 	}
 
+	[Authorize(Roles = "Attendee")]
 	[HttpGet]
 	public async Task<ActionResult<PaginationResult<UserRegistrationDto>>> BrowseMyRegistrations([FromQuery] PaginationRequest request,
 		bool onlyPending = false)
@@ -49,6 +52,7 @@ public class RegistrationController(IMediator mediator)
 		return Ok(result);
 	}
 
+	[Authorize(Roles = "Host")]
 	[HttpGet("conference/{conferenceId}")]
 	public async Task<ActionResult<IReadOnlyList<ConferenceRegistrationDto>>> BrowseRegistrationsByConference([FromRoute] Guid conferenceId,
 		[FromQuery] List<RegistrationStatus> statuses)

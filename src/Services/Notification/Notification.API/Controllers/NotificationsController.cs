@@ -10,6 +10,7 @@ namespace Notification.API.Controllers;
 public class NotificationsController(IMediator mediator)
 	: ControllerBase
 {
+	[Authorize(Roles = "Attendee")]
 	[HttpGet]
 	public async Task<ActionResult<PaginationResult<NotificationDto>>> BrowseMyNotifications([FromQuery] PaginationRequest request)
 	{

@@ -9,6 +9,7 @@ namespace ConferenceManagement.API.Controllers;
 public class LecturesController(IMediator mediator)
 	: ControllerBase
 {
+	[Authorize(Roles = "Host,Prelegent")]
 	[HttpPut("{id}")]
 	public async Task<ActionResult> UpdateLecture(Guid id, [FromBody]UpdateLectureDto dto)
 	{
@@ -22,6 +23,7 @@ public class LecturesController(IMediator mediator)
 		return Accepted();
 	}
 
+	[Authorize(Roles = "Host")]
 	[HttpPut("{id}/prelegents")]
 	public async Task<ActionResult> UpdateLecturePrelegents(Guid id, [FromBody]UpdateLecturePrelegentsDto dto)
 	{
