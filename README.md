@@ -16,7 +16,7 @@ This is a simplified MVP backend application that allows conference organizers, 
 - Receive notifications about registrations and updates related to their conferences 📣
 - Authenticate users via email & password 🔐
 
-Feature are encapsulated in its own servicse, promoting separation of concerns and scalability.
+Features are encapsulated in its own servicse, promoting separation of concerns and scalability.
 
 ---
 
@@ -36,23 +36,23 @@ This version implements the same use cases as the monolith, but distributed acro
    - Handles routing, authentication, and JWT validation  
    - Built with `YARP` reverse proxy  
 
-2. 🔐 **AuthenticationService**  
+2. 🔐 **Authentication Service**  
    - User registration & login (email, password, role)  
    - JWT token generation & validation  
 
-3. 🏛️ **ConferenceManagementService**  
+3. 🏛️ **ConferenceManagement Service**  
    - Create/edit/view conferences  
    - Add/edit lectures and assign speakers  
 
-4. 📝 **RegistrationService**  
+4. 📝 **Registration Service**  
    - Participant registration  
    - View/cancel registrations  
    - Lists for organizers and users  
 
-5. 📣 **NotificationService**  
+5. 📣 **Notification Service**  
    - Logs and stores notifications  
-   - Simulates event-driven messaging  
-   - Displays notification history
+   - Simulates event-driven messaging (simplified storing notifications and mocked sending)
+   - Displays notification history for user
 
 ---
 
