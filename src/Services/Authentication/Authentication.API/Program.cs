@@ -1,10 +1,13 @@
+using Shared.Context;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services
 	.AddApiServices(builder.Configuration)
 	.AddApplicationServices()
-	.AddInfrastructure(builder.Configuration);
+	.AddInfrastructure(builder.Configuration)
+	.AddConfyAuthentication(builder.Configuration);
 
 builder.Services.AddControllers();
 
@@ -16,7 +19,7 @@ if (app.Environment.IsDevelopment())
 }
 
 // Configure the HTTP request pipeline.
-
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseApiServices();
 

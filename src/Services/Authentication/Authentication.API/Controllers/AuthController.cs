@@ -1,6 +1,7 @@
 using Authentication.API.Authentication.Create;
 using Authentication.API.Authentication.Login;
 using Authentication.API.Authentication.Register;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Authentication.API.Controllers
@@ -32,6 +33,7 @@ namespace Authentication.API.Controllers
 			return Ok(response);
 		}
 
+        [Authorize(Roles = "Admin")]
         [HttpPost("create")]
         public async Task<ActionResult<Guid>> CreateUser([FromBody]CreateUserDto dto)
         {

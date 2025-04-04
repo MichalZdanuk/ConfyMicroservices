@@ -1,4 +1,4 @@
-﻿using Authentication.API.DAL;
+﻿using Authentication.API.Seeding;
 
 namespace Authentication.API;
 
@@ -11,5 +11,12 @@ public static class Extensions
 		var context = scope.ServiceProvider.GetRequiredService<AuthenticationDbContext>();
 
 		context.Database.MigrateAsync().GetAwaiter().GetResult();
+
+		await SeedAsync(context);
+	}
+
+	private static async Task SeedAsync(AuthenticationDbContext context)
+	{
+		await AdminUserSeeder.SeedAdminUserAsync(context);
 	}
 }
