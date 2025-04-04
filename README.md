@@ -115,6 +115,42 @@ These are the **six core use cases** selected for benchmarking with [NBomber](ht
 
 ---
 
+## 🚀 Microservices Availability
+
+Below is a table specifying which microservices or the API Gateway are available on specific ports, either for **localhost** or when running in **Docker**:
+
+| Service                       | Local Env     | Docker Env   | Description                                        |
+|-------------------------------|---------------|--------------|----------------------------------------------------|
+| **Authentication Service**    | 5000 - 5050   | 6000 - 6060  | Handles user authentication and JWT generation     |
+| **Conference Management**     | 5001 - 5051   | 6001 - 6061  | Manages conferences, lectures, and schedules       |
+| **Registration Service**      | 5002 - 5052   | 6002 - 6062  | Handles participant registration and cancellations |
+| **Notification Service**      | 5003 - 5053   | 6003 - 6063  | Sends event notifications to users                 |
+| **API Gateway**               | 5004 - 5054   | 6004 - 6064  | Central entry point for routing and authentication |
+| **RabbitMQ (Message Broker)** | N/A           | 5672         | Message broker for communication between services  |
+
+**Note:**
+- Convention is that first port number is HTTP and second is HTTPS.
+- The **Local Env** are the default ports when running the services locally.  
+- The **Docker Env** are ports available when running the services within Docker.
+
+---
+
+## 🏃 How to Run the Application
+
+To run the entire microservices system locally using **Docker**, execute the following commands:
+
+```bash
+git clone https://github.com/MichalZdanuk/ConfyMicroservices.git
+```
+```bash
+cd ConfyMicroservices/src
+```
+```bash
+docker-compose -f docker-compose.yml -f docker-compose.override.yml up
+```
+
+---
+
 ## 🔗 Related Projects
 
 👉 Check out the [Monolithic version here](https://github.com/MichalZdanuk/ConfyMonolith) for comparison.
