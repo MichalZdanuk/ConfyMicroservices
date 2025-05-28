@@ -8,7 +8,7 @@ public static class LoadTestHelper
 		int virtualUsersCount,
 		string simulationMode,
 		Func<HttpClient, ScenarioProps> scenarioFactory,
-		int runCount = 3)
+		int runCount = 5)
 	{
 		var allStats = new List<ScenarioStats[]>();
 
