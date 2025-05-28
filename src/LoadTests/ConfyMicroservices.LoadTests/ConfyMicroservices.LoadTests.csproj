@@ -21,6 +21,7 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\Services\ConferenceManagement\ConferenceManagement.Application\ConferenceManagement.Application.csproj" />
+	  <ProjectReference Include="..\..\Shared\Shared\Shared.csproj" />
 	</ItemGroup>
 
   <ItemGroup>
