@@ -58,6 +58,8 @@ services:
       - MessageBroker__Host=amqp://confy-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
     depends_on:
       - authenticationdb
       - messagebroker
@@ -80,6 +82,8 @@ services:
       - MessageBroker__Host=amqp://confy-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
     depends_on:
       - conferencemanagementdb
       - messagebroker
@@ -103,6 +107,8 @@ services:
       - MessageBroker__Host=amqp://confy-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
     depends_on:
       - registrationdb
       - messagebroker
@@ -127,6 +133,8 @@ services:
       - MessageBroker__Host=amqp://confy-mq:5672
       - MessageBroker__UserName=guest
       - MessageBroker__Password=guest
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
     depends_on:
       - notificationdb
       - messagebroker
@@ -148,6 +156,8 @@ services:
       - Jwt__Authority=http://authentication.api:8080
       - Jwt__Audience=Microservices
       - Jwt__Key=YourSuperVeryVeryLongSecretKeyHere
+      - Logging__LogLevel__Default=Warning
+      - Logging__LogLevel__Microsoft.AspNetCore=Warning
     depends_on:
       - authentication.api
       - conferencemanagement.api
