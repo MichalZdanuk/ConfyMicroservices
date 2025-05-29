@@ -107,11 +107,9 @@ These are the **six core use cases** selected for benchmarking with [NBomber](ht
 1. ✅ Create a new conference  
 2. ✏️ Edit an existing conference  
 3. 🔍 Browse conferences (filters & pagination)  
-4. 📄 Get conference details  
-5. ➕ Add a lecture to a conference  
-6. 🛠️ Edit a lecture
+4. 📄 Get conference details
 
-![UseCases](https://github.com/user-attachments/assets/442e0567-a6ac-4d53-9f2d-d52f605fe7ba)
+![use_cases_for_experiments](https://github.com/user-attachments/assets/93db488d-7dfe-4088-bb81-8c754a5068f1)
 
 ---
 
