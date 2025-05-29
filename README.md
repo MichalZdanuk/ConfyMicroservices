@@ -25,7 +25,7 @@ Features are encapsulated in its own servicse, promoting separation of concerns 
 
 This application is part of my thesis exploring:
 
-> **"Comparison of Monolithic Architecture and Microservices-Based Architecture"**
+> **"Comparative Analysis of Monolithic Architecture and Microservices-Based Architecture Using an Example System"**
 
 This version implements the same use cases as the monolith, but distributed across multiple services.
 
