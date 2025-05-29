@@ -153,6 +153,8 @@ docker-compose -f docker-compose.yml -f docker-compose.override.yml up
 
 👉 Check out the [Monolithic version here](https://github.com/MichalZdanuk/ConfyMonolith) for comparison.
 
+👉 Performance analysis can be found here [Performance analysis](https://github.com/MichalZdanuk/ArchitecturesAnalysis).
+
 ---
 
 ## 📄 License
